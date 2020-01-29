@@ -1,42 +1,39 @@
+/** @jsx jsx */
+import { jsx, Flex } from "theme-ui"
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
+import logo from "../images/logo.svg"
+
+const Header = () => (
+  <Flex
+    sx={{
+      width: "100%",
+      justifyContent: "space-between",
+      alignItems: "center",
+      px: [2, 3, 4],
+      py: [3, 4],
     }}
+    as="header"
   >
-    <div
+    <Link
+      to="/"
       style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
+        textDecoration: `none`,
       }}
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
+      <img src={logo} alt="Nick Dejesus" title="Nick Dejesus" />
+    </Link>
+    <Flex>
+      <Link
+        to="/about"
+        style={{
+          textDecoration: `none`,
+        }}
+      >
+        About
+      </Link>
+    </Flex>
+  </Flex>
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Header
