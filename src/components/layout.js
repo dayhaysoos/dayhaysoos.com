@@ -1,3 +1,5 @@
+// export { default } from "../gatsby-theme-ui-blog/layout"
+
 /** @jsx jsx */
 import React from "react"
 import { jsx, Styled } from "theme-ui"
@@ -6,6 +8,8 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import Footer from "./footer"
+
+import "../fonts/fonts.css"
 
 export default ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -34,7 +38,7 @@ export default ({ children }) => {
             flex: "1 1 auto",
           }}
         >
-          Main
+          {children}
         </main>
         <Footer />
       </div>

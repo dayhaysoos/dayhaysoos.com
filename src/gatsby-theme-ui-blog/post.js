@@ -10,13 +10,13 @@ export default ({
   keywords,
   tags,
   ...props
-}) => (
-  <Styled.root>
-    <Layout title={title} excerpt={excerpt} {...props}>
-      adadad
-      <Styled.h1>{title}</Styled.h1>
-      <div>{date}</div>
-      {children}
-    </Layout>
-  </Styled.root>
-)
+}) => {
+  return (
+    <Styled.root>
+      <Layout title={title} excerpt={excerpt} {...props}>
+        <Styled.h1>{title}</Styled.h1>
+        {children}
+      </Layout>
+    </Styled.root>
+  )
+}

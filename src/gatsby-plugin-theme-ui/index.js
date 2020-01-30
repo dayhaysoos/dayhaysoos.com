@@ -1,9 +1,7 @@
-import { lighten } from "@theme-ui/color"
-
 export default {
   colors: {
     text: "#191919",
-    background: "#fff",
+    background: "#ffffff",
     primary: "#0036ff",
   },
   fonts: {
