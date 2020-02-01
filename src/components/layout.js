@@ -1,10 +1,9 @@
 // export { default } from "../gatsby-theme-ui-blog/layout"
 
 /** @jsx jsx */
-import React from "react"
 import { jsx, Styled } from "theme-ui"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+// import PropTypes from "prop-types"
+// import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import Footer from "./footer"
@@ -12,15 +11,15 @@ import Footer from "./footer"
 import "../fonts/fonts.css"
 
 export default ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery(graphql`
+  //   query SiteTitleQuery {
+  //     site {
+  //       siteMetadata {
+  //         title
+  //       }
+  //     }
+  //   }
+  // `)
 
   return (
     <Styled.root>

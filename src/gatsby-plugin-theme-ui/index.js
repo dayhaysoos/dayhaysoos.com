@@ -12,16 +12,16 @@ export default {
   fontWeights: {
     body: 400,
     heading: 700,
-    semibold: 700,
+    semibold: 600,
     bold: 700,
   },
   lineHeights: {
     body: 1.5,
-    heading: 1.125,
+    heading: 1.25,
   },
   layout: {
     container: {
-      maxWidth: "960px",
+      maxWidth: "992px",
       px: [3, 4],
     },
   },
@@ -30,6 +30,10 @@ export default {
       fontFamily: "body",
       lineHeight: "body",
       fontWeight: "body",
+      a: {
+        color: "primary",
+        textDecoration: "none",
+      },
     },
     h1: {
       color: "text",
@@ -81,6 +85,7 @@ export default {
     },
     a: {
       color: "primary",
+      fontWeight: 900,
     },
     pre: {
       fontFamily: "monospace",

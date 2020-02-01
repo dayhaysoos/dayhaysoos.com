@@ -1,13 +1,48 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx, Flex, Container } from "theme-ui"
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+
+import slashes from "../images/slashes.svg"
 
 const Footer = () => (
-  <footer>
-    <div>sfdsd</div>
-  </footer>
+  <Container
+    sx={{
+      width: "100%",
+      justifyContent: "space-between",
+      alignItems: "center",
+      mt: [4, 5],
+      mb: 4,
+    }}
+    as={Flex}
+  >
+    <img src={slashes} alt="Nick Dejesus" title="Nick Dejesus" />
+    <Flex>
+      <Link
+        to="/about"
+        sx={{
+          fontWeight: "semibold",
+        }}
+      >
+        GitHub
+      </Link>
+      <Link
+        to="/about"
+        style={{
+          textDecoration: `none`,
+        }}
+      >
+        Twitter
+      </Link>
+      <Link
+        to="/about"
+        style={{
+          textDecoration: `none`,
+        }}
+      >
+        Email Me
+      </Link>
+    </Flex>
+  </Container>
 )
 
 export default Footer

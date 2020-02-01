@@ -14,7 +14,6 @@ export default ({
   return (
     <Styled.root>
       <Layout title={title} excerpt={excerpt} {...props}>
-        <Styled.h1>{title}</Styled.h1>
         {children}
       </Layout>
     </Styled.root>
