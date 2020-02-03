@@ -5,8 +5,8 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PostsList from "../components/postsList"
+import SlashedTitle from "../components/slashedTitle"
 import portrait from "../images/nick.jpg"
-import slashesDark from "../images/slashes-dark.svg"
 
 const IndexPage = () => {
   const allPosts = useStaticQuery(graphql`
@@ -104,26 +104,8 @@ const IndexPage = () => {
         </Container>
       </div>
       <Container>
-        <Flex
-          sx={{
-            textTransform: "uppercase",
-            alignItems: "center",
-            fontSize: 1,
-            fontWeight: "semibold",
-          }}
-        >
-          <img
-            src={slashesDark}
-            alt="slashes"
-            sx={{
-              mr: 2,
-              display: "block",
-              height: "12px",
-            }}
-          />
-          from the blog
-        </Flex>
-        <PostsList data={allPosts.allBlogPost.nodes} />
+        <SlashedTitle title="from the blog" />
+        <PostsList data={allPosts.allBlogPost.nodes} sx={{ mt: 4 }} />
       </Container>
     </Layout>
   )

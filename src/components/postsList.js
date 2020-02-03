@@ -6,10 +6,8 @@ const PostsList = ({ data, ...restProps }) => {
   return (
     <Box
       as="ul"
-      {...restProps}
       sx={{
         mx: "-2rem",
-        mt: 4,
         listStyle: "none",
         p: 0,
         "li:not(:first-of-type)": {
@@ -44,6 +42,7 @@ const PostsList = ({ data, ...restProps }) => {
           },
         },
       }}
+      {...restProps}
     >
       {data.map(item => (
         <li key={item.id}>

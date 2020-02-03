@@ -7,7 +7,7 @@ export default {
   fonts: {
     body: '"Inter", sans-serif',
     heading: '"Inter", sans-serif',
-    monospace: "Menlo, monospace",
+    monospace: '"calling-code", monospace',
   },
   fontWeights: {
     body: 400,
