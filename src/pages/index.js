@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PostsList from "../components/postsList"
 import portrait from "../images/nick.jpg"
-import slashes from "../images/slashes.svg"
+import slashesDark from "../images/slashes-dark.svg"
 
 const IndexPage = () => {
   const allPosts = useStaticQuery(graphql`
@@ -110,12 +110,12 @@ const IndexPage = () => {
           }}
         >
           <img
-            src={slashes}
+            src={slashesDark}
             alt="slashes"
             sx={{
               mr: 2,
               display: "block",
-              height: "14px",
+              height: "12px",
             }}
           />
           from the blog
