@@ -33,6 +33,15 @@ export default {
       a: {
         color: "primary",
         textDecoration: "none",
+        ":hover": {
+          textDecoration: "underline",
+        },
+      },
+      "h1, h2, h3, h4, h5, h6": {
+        a: {
+          color: "inherit",
+          fontWeight: "inherit",
+        },
       },
     },
     h1: {
@@ -83,10 +92,10 @@ export default {
       fontWeight: "body",
       lineHeight: "body",
     },
-    a: {
-      color: "primary",
-      fontWeight: 900,
-    },
+    // a: {
+    //   color: "primary",
+    //   fontWeight: 900,
+    // },
     pre: {
       fontFamily: "monospace",
       overflowX: "auto",

@@ -58,19 +58,20 @@ const IndexPage = () => {
             sx={{
               fontSize: "22px",
               letterSpacing: "-0.5px",
-              paddingTop: "250px",
+              pt: "250px",
               maxWidth: "350px",
               "@media (min-width: 640px)": {
                 fontSize: "24px",
-                paddingTop: "40px",
+                pt: "40px",
                 maxWidth: "100%",
               },
               "@media (min-width: 768px)": {
                 fontSize: "30px",
                 letterSpacing: "-0.75px",
-                paddingTop: "40px",
+                pt: "40px",
               },
               "@media (min-width: 992px)": {
+                pt: 0,
                 fontSize: "42px",
                 letterSpacing: "-1px",
               },
@@ -83,21 +84,23 @@ const IndexPage = () => {
             Nick — A Developer from Boston
             <br sx={{ display: ["none", "block"] }} /> teaching React, React
             Native <br sx={{ display: ["none", "block"] }} /> and JAMstack.
-            Author of the <br sx={{ display: ["none", "block"] }} /> premier
-            Tekken frame data app.
+            Author of the <br sx={{ display: ["none", "block"] }} /> premier{" "}
+            <a href="#">Tekken frame data app.</a>
           </Heading>
-          <Link
-            to="/"
-            sx={{
-              mt: [4, 5],
-              textTransform: "capitalize",
-              display: "inline-block",
-              fontWeight: "semibold",
-              color: "text",
-            }}
-          >
-            read full bio
-          </Link>
+          <Heading as="h4" sx={{ fontWeight: "semibold" }}>
+            <Link
+              to="/"
+              sx={{
+                mt: [4, 5],
+                textTransform: "capitalize",
+                display: "inline-block",
+                fontWeight: "semibold",
+                color: "red",
+              }}
+            >
+              read full bio
+            </Link>
+          </Heading>
         </Container>
       </div>
       <Container>
