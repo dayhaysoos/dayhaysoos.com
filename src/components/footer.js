@@ -8,6 +8,7 @@ const Footer = () => (
   <Container
     sx={{
       width: "100%",
+      flexDirection: ["column", "row"],
       justifyContent: "space-between",
       alignItems: "center",
       mt: [4, 5],
@@ -15,8 +16,21 @@ const Footer = () => (
     }}
     as={Flex}
   >
-    <img src={slashes} alt="Nick Dejesus" title="Nick Dejesus" />
-    <Flex>
+    <img
+      src={slashes}
+      alt="Nick Dejesus"
+      title="Nick Dejesus"
+      sx={{
+        width: ["50px", "auto"],
+      }}
+    />
+    <Flex
+      sx={{
+        justifyContent: ["space-around", "self-start"],
+        width: ["100%", "auto"],
+        mt: [5, 0],
+      }}
+    >
       <Link
         to="/about"
         sx={{
@@ -27,16 +41,18 @@ const Footer = () => (
       </Link>
       <Link
         to="/about"
-        style={{
-          textDecoration: `none`,
+        sx={{
+          fontWeight: "semibold",
+          ml: [0, 5],
         }}
       >
         Twitter
       </Link>
       <Link
         to="/about"
-        style={{
-          textDecoration: `none`,
+        sx={{
+          fontWeight: "semibold",
+          ml: [0, 5],
         }}
       >
         Email Me
