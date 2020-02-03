@@ -33,6 +33,7 @@ const PostsList = ({ data, ...restProps }) => {
             boxShadow:
               "0 2px 23px 0 rgba(0,0,0,0.05), 0 8px 20px 0 rgba(0,0,0,0.02), 0 12px 74px 0 rgba(0,0,0,0.06)",
             color: "primary",
+            textDecoration: "none",
             div: {
               boxShadow: "none",
             },
