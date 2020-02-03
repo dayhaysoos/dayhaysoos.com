@@ -91,7 +91,7 @@ const IndexPage = () => {
             sx={{
               mt: [4, 5],
               textTransform: "capitalize",
-              display: "block",
+              display: "inline-block",
               fontWeight: "semibold",
               color: "text",
             }}
@@ -120,14 +120,7 @@ const IndexPage = () => {
           />
           from the blog
         </Flex>
-        <PostsList
-          data={allPosts.allBlogPost.nodes}
-          sx={{
-            mt: 4,
-            listStyle: "none",
-            p: 0,
-          }}
-        />
+        <PostsList data={allPosts.allBlogPost.nodes} />
       </Container>
     </Layout>
   )
