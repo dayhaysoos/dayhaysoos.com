@@ -7,7 +7,7 @@ const PostsList = ({ data, ...restProps }) => {
     <Box
       as="ul"
       sx={{
-        mx: "-2rem",
+        mx: "-1.5rem",
         listStyle: "none",
         p: 0,
         "li:not(:first-of-type)": {
@@ -25,32 +25,56 @@ const PostsList = ({ data, ...restProps }) => {
           fontSize: "30px",
           fontWeight: "bold",
           color: "text",
-          px: 4,
+          px: "1.5rem",
+          ".title-holder": {
+            position: "relative",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+            py: 3,
+            pr: "1.5rem",
+            boxShadow: "inset 0 -1px 0 0 #F2F2F2",
+            ":before": {
+              position: "absolute",
+              top: 0,
+              right: 0,
+              bottom: 0,
+              m: "auto",
+              width: 0,
+              height: 0,
+              borderStyle: "solid",
+              borderWidth: "5px 0 5px 10px",
+              borderColor: theme =>
+                `transparent transparent transparent ${theme.colors.primary}`,
+            },
+          },
           ":hover": {
             background: "white",
             boxShadow:
               "0 2px 23px 0 rgba(0,0,0,0.05), 0 8px 20px 0 rgba(0,0,0,0.02), 0 12px 74px 0 rgba(0,0,0,0.06)",
             color: "primary",
             textDecoration: "none",
-            div: {
+            ".title-holder": {
               boxShadow: "none",
+              ":before": {
+                content: '""',
+              },
             },
-          },
-          div: {
-            py: 3,
-            boxShadow: "inset 0 -1px 0 0 #F2F2F2",
           },
         },
       }}
       {...restProps}
     >
-      {data.map(item => (
-        <li key={item.id}>
-          <Link to={item.slug}>
-            <div>{item.title}</div>
-          </Link>
-        </li>
-      ))}
+      {data.map(item => {
+        console.log("item.title: ", item.title)
+        return (
+          <li key={item.id}>
+            <Link to={item.slug}>
+              <div className="title-holder">{item.title}</div>
+            </Link>
+          </li>
+        )
+      })}
     </Box>
   )
 }

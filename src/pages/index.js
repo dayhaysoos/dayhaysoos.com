@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Flex, Container, Heading } from "theme-ui"
+import { jsx, Container, Heading } from "theme-ui"
 import { useStaticQuery, graphql, Link } from "gatsby"
 
 import Layout from "../components/layout"
@@ -85,7 +85,7 @@ const IndexPage = () => {
             <br sx={{ display: ["none", "block"] }} /> teaching React, React
             Native <br sx={{ display: ["none", "block"] }} /> and JAMstack.
             Author of the <br sx={{ display: ["none", "block"] }} /> premier{" "}
-            <a href="#">Tekken frame data app.</a>
+            <a href="/">Tekken frame data app.</a>
           </Heading>
           <Heading as="h4" sx={{ fontWeight: "semibold" }}>
             <Link

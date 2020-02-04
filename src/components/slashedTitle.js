@@ -8,7 +8,6 @@ const SlashedTitle = ({ title, ...restProps }) => (
       display: "flex",
       alignItems: "center",
       textTransform: "uppercase",
-      alignItems: "center",
       fontSize: "15px",
       fontWeight: "bold",
       fontFamily: "monospace",
@@ -23,7 +22,7 @@ const SlashedTitle = ({ title, ...restProps }) => (
         mr: 2,
       }}
     >
-      //
+      {`//`}
     </span>
     {title}
   </Heading>
