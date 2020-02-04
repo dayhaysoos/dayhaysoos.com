@@ -8,7 +8,7 @@ const SlashedTitle = ({ title, ...restProps }) => (
       display: "flex",
       alignItems: "center",
       textTransform: "uppercase",
-      fontSize: "15px",
+      fontSize: ["13px", "15px"],
       fontWeight: "bold",
       fontFamily: "monospace",
       color: "text",

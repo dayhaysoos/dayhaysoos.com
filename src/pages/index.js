@@ -106,11 +106,11 @@ const IndexPage = () => {
       <Container>
         <section>
           <SlashedTitle title="from the blog" />
-          <PostsList data={allPosts.allBlogPost.nodes} sx={{ mt: 4 }} />
+          <PostsList data={allPosts.allBlogPost.nodes} sx={{ mt: [3, 4] }} />
         </section>
-        <section sx={{ mt: 6 }}>
+        <section sx={{ mt: [4, 5, 6] }}>
           <SlashedTitle title="free egghead resources" />
-          <PostsList data={allPosts.allBlogPost.nodes} sx={{ mt: 4 }} />
+          <PostsList data={allPosts.allBlogPost.nodes} sx={{ mt: [3, 4] }} />
         </section>
       </Container>
     </Layout>
