@@ -66,7 +66,6 @@ const PostsList = ({ data, ...restProps }) => {
       {...restProps}
     >
       {data.map(item => {
-        console.log("item.title: ", item.title)
         return (
           <li key={item.id}>
             <Link to={item.slug}>
