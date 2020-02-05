@@ -1,7 +1,7 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui'
-import { Link } from 'gatsby'
-import { Layout } from 'gatsby-theme-ui-layout'
+import { jsx, Styled } from "theme-ui"
+import Link from "../components/link"
+import { Layout } from "gatsby-theme-ui-layout"
 
 export default ({ posts, ...props }) => (
   <Styled.root>

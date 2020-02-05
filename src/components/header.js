@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Flex } from "theme-ui"
-import { Link } from "gatsby"
+import Link from "./link"
 
 import logo from "../images/logo.svg"
 

@@ -1,12 +1,54 @@
 /** @jsx jsx */
 import { jsx, Container, Heading } from "theme-ui"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
+import Link from "../components/link"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PostsList from "../components/postsList"
 import SlashedTitle from "../components/slashedTitle"
 import portrait from "../images/nick.jpg"
+import iconPlay from "../images/icon-play.svg"
+
+const IconPlay = () => (
+  <img
+    alt="play"
+    src={iconPlay}
+    sx={{
+      display: "block",
+      width: "22px",
+    }}
+  />
+)
+
+const freeEggheadResources = [
+  {
+    id: "javascript-filter-strings-with-the-filter-array-method-in-javascript",
+    title: "Filter Strings with the Filter Array Method in JavaScript",
+    href:
+      "https://egghead.io/lessons/javascript-filter-strings-with-the-filter-array-method-in-javascript",
+    prepend: <IconPlay />,
+    category: "javascript",
+  },
+  {
+    id:
+      "javascript-filter-strings-with-the-filter-array-method-in-javascript-01",
+    title: "Filter Strings with the Filter Array Method in JavaScript",
+    href:
+      "https://egghead.io/lessons/javascript-filter-strings-with-the-filter-array-method-in-javascript",
+    prepend: <IconPlay />,
+    category: "javascript",
+  },
+  {
+    id:
+      "javascript-filter-strings-with-the-filter-array-method-in-javascript-02",
+    title: "Filter Strings with the Filter Array Method in JavaScript",
+    href:
+      "https://egghead.io/lessons/javascript-filter-strings-with-the-filter-array-method-in-javascript",
+    prepend: <IconPlay />,
+    category: "javascript",
+  },
+]
 
 const IndexPage = () => {
   const allPosts = useStaticQuery(graphql`
@@ -110,7 +152,7 @@ const IndexPage = () => {
         </section>
         <section sx={{ mt: [4, 5, 6] }}>
           <SlashedTitle title="free egghead resources" />
-          <PostsList data={allPosts.allBlogPost.nodes} sx={{ mt: [3, 4] }} />
+          <PostsList data={freeEggheadResources} sx={{ mt: [3, 4] }} />
         </section>
       </Container>
     </Layout>

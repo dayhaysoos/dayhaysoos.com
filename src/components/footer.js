@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import { jsx, Flex, Container, Link } from "theme-ui"
+import { jsx, Flex, Container } from "theme-ui"
+import Link from "./link"
 
 import slashes from "../images/slashes.svg"
 
@@ -31,7 +32,7 @@ const Footer = () => (
       }}
     >
       <Link
-        href="https://github.com/dayhaysoos"
+        to="https://github.com/dayhaysoos"
         sx={{
           fontWeight: "semibold",
         }}
@@ -39,7 +40,7 @@ const Footer = () => (
         GitHub
       </Link>
       <Link
-        href="https://twitter.com/dayhaysoos"
+        to="https://twitter.com/dayhaysoos"
         sx={{
           fontWeight: "semibold",
           ml: [0, 5],
@@ -48,7 +49,7 @@ const Footer = () => (
         Twitter
       </Link>
       <Link
-        href="#"
+        to="#"
         sx={{
           fontWeight: "semibold",
           ml: [0, 5],
