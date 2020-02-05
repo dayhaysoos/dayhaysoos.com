@@ -5,43 +5,14 @@ import Link from "../components/link"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import PostsList from "../components/postsList"
+import ItemsList from "../components/itemsList"
 import SlashedTitle from "../components/slashedTitle"
+import IconPlay from "../components/iconPlay"
 import portrait from "../images/nick.jpg"
-import iconPlay from "../images/icon-play.svg"
-
-const IconPlay = () => (
-  <img
-    alt="play"
-    src={iconPlay}
-    sx={{
-      display: "block",
-      width: "22px",
-    }}
-  />
-)
 
 const freeEggheadResources = [
   {
     id: "javascript-filter-strings-with-the-filter-array-method-in-javascript",
-    title: "Filter Strings with the Filter Array Method in JavaScript",
-    href:
-      "https://egghead.io/lessons/javascript-filter-strings-with-the-filter-array-method-in-javascript",
-    prepend: <IconPlay />,
-    category: "javascript",
-  },
-  {
-    id:
-      "javascript-filter-strings-with-the-filter-array-method-in-javascript-01",
-    title: "Filter Strings with the Filter Array Method in JavaScript",
-    href:
-      "https://egghead.io/lessons/javascript-filter-strings-with-the-filter-array-method-in-javascript",
-    prepend: <IconPlay />,
-    category: "javascript",
-  },
-  {
-    id:
-      "javascript-filter-strings-with-the-filter-array-method-in-javascript-02",
     title: "Filter Strings with the Filter Array Method in JavaScript",
     href:
       "https://egghead.io/lessons/javascript-filter-strings-with-the-filter-array-method-in-javascript",
@@ -148,11 +119,11 @@ const IndexPage = () => {
       <Container>
         <section>
           <SlashedTitle title="from the blog" />
-          <PostsList data={allPosts.allBlogPost.nodes} sx={{ mt: [3, 4] }} />
+          <ItemsList data={allPosts.allBlogPost.nodes} sx={{ mt: [3, 4] }} />
         </section>
         <section sx={{ mt: [4, 5, 6] }}>
           <SlashedTitle title="free egghead resources" />
-          <PostsList data={freeEggheadResources} sx={{ mt: [3, 4] }} />
+          <ItemsList data={freeEggheadResources} sx={{ mt: [3, 4] }} />
         </section>
       </Container>
     </Layout>
