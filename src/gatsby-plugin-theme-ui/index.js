@@ -41,6 +41,12 @@ export default {
       fontFamily: "body",
       lineHeight: "body",
       fontWeight: "body",
+      "h1, h2, h3, h4, h5, h6": {
+        a: {
+          color: "inherit",
+          fontWeight: "inherit",
+        },
+      },
     },
     h1: {
       color: "text",

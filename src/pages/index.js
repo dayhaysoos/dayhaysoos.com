@@ -100,20 +100,19 @@ const IndexPage = () => {
             Author of the <br sx={{ display: ["none", "block"] }} /> premier{" "}
             <a href="/">Tekken frame data app.</a>
           </Heading>
-          <Heading as="h4" sx={{ fontWeight: "semibold" }}>
-            <Link
-              to="/"
-              sx={{
-                mt: [4, 5],
-                textTransform: "capitalize",
-                display: "inline-block",
-                fontWeight: "semibold",
-                color: "red",
-              }}
-            >
-              read full bio
-            </Link>
-          </Heading>
+          <Link
+            to="/"
+            sx={{
+              variant: "links.regular",
+              mt: [4, 5],
+              textTransform: "capitalize",
+              display: "inline-block",
+              fontWeight: "semibold",
+              color: "text",
+            }}
+          >
+            read full bio
+          </Link>
         </Container>
       </div>
       <Container>

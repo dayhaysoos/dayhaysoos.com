@@ -21,6 +21,7 @@ export default ({ data, ...restProps }) => {
           },
         },
         a: {
+          variant: "links.regular",
           display: "block",
           fontSize: [2, 4, "30px"],
           fontWeight: ["semibold", "bold"],
