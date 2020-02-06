@@ -35,6 +35,8 @@ export default ({ data, ...restProps }) => {
               textDecoration: "none",
               ".wrapper": {
                 boxShadow: "none",
+              },
+              ".title-holder": {
                 ":before": {
                   content: '""',
                 },
