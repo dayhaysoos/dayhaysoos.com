@@ -10,28 +10,59 @@ const Header = () => (
       width: "100%",
       justifyContent: "space-between",
       alignItems: "center",
-      px: [2, 3, 4],
+      px: [3, 4],
       py: [3, 4],
     }}
     as="header"
   >
-    <Link
-      to="/"
-      style={{
-        textDecoration: `none`,
-      }}
-    >
-      <img src={logo} alt="Nick Dejesus" title="Nick Dejesus" />
+    <Link to="/">
+      <img
+        src={logo}
+        alt="Nick Dejesus"
+        title="Nick Dejesus"
+        sx={{ display: "block", width: ["110px", "130px"] }}
+      />
     </Link>
     <Flex>
       <Link
         to="/about"
-        style={{
-          textDecoration: `none`,
+        sx={{
+          variant: "links.regular",
+          fontSize: [1, 2],
+          fontWeight: "semibold",
+          color: "text",
+          opacity: 0.7,
+          ":hover": {
+            textDecoration: "none",
+            color: "primary",
+            opacity: 1,
+          },
         }}
       >
         About
       </Link>
+      <button
+        type="button"
+        onClick={console.log("scroll to subscribe")}
+        sx={{
+          ml: [3, 4],
+          background: "none",
+          boxShadow: "none",
+          border: "none",
+          fontSize: [1, 2],
+          fontWeight: "semibold",
+          p: 0,
+          color: "text",
+          opacity: 0.7,
+          cursor: "pointer",
+          ":hover": {
+            opacity: 1,
+            color: "primary",
+          },
+        }}
+      >
+        Subscribe
+      </button>
     </Flex>
   </Flex>
 )

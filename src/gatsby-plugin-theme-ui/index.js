@@ -25,26 +25,22 @@ export default {
       px: [3, 4],
     },
   },
+  links: {
+    regular: {
+      color: "primary",
+      textDecoration: "none",
+      "@media (hover: hover)": {
+        ":hover": {
+          textDecoration: "underline",
+        },
+      },
+    },
+  },
   styles: {
     root: {
       fontFamily: "body",
       lineHeight: "body",
       fontWeight: "body",
-      a: {
-        color: "primary",
-        textDecoration: "none",
-        "@media (hover: hover)": {
-          ":hover": {
-            textDecoration: "underline",
-          },
-        },
-      },
-      "h1, h2, h3, h4, h5, h6": {
-        a: {
-          color: "inherit",
-          fontWeight: "inherit",
-        },
-      },
     },
     h1: {
       color: "text",
