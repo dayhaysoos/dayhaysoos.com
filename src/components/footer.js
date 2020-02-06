@@ -34,6 +34,8 @@ const Footer = () => (
       <Link
         to="https://github.com/dayhaysoos"
         sx={{
+          variant: "links.regular",
+          fontSize: [1, 2],
           fontWeight: "semibold",
         }}
       >
@@ -42,6 +44,8 @@ const Footer = () => (
       <Link
         to="https://twitter.com/dayhaysoos"
         sx={{
+          variant: "links.regular",
+          fontSize: [1, 2],
           fontWeight: "semibold",
           ml: [0, 5],
         }}
@@ -51,8 +55,10 @@ const Footer = () => (
       <Link
         to="#"
         sx={{
+          variant: "links.regular",
+          fontSize: [1, 2],
           fontWeight: "semibold",
-          ml: [0, 5],
+          ml: [0, 4, 5],
         }}
       >
         Email Me
