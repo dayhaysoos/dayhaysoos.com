@@ -43,8 +43,8 @@ export default ({ children }) => {
         </main>
         <section
           sx={{
-            pt: 6,
-            mt: 6,
+            pt: [4, 5, 6],
+            mt: [4, 5, 6],
             borderTop: "1px solid",
             borderColor: alpha("text", 0.1),
           }}
