@@ -43,7 +43,7 @@ const Header = () => (
       </Link>
       <button
         type="button"
-        onClick={console.log("scroll to subscribe")}
+        onClick={() => console.log("scroll to subscribe")}
         sx={{
           ml: [3, 4],
           background: "none",
