@@ -7,6 +7,7 @@ import { jsx, Styled } from "theme-ui"
 
 import Header from "./header"
 import Footer from "./footer"
+import SubscribeForm from "./subscribeForm"
 
 import "../fonts/fonts.css"
 
@@ -39,6 +40,7 @@ export default ({ children }) => {
         >
           {children}
         </main>
+        <SubscribeForm />
         <Footer />
       </div>
     </Styled.root>
