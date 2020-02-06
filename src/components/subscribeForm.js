@@ -75,7 +75,9 @@ const SubscribeForm = props => {
           >
             {(!submitted || loading) && (
               <>
-                <h3 id="notify-me">Get notified when it's ready</h3>
+                <h3 id="notify-me">
+                  Get free previews of XYZ Course I’m working on.
+                </h3>
                 <Flex sx={{ flexDirection: ["column", "row"] }}>
                   <Box>
                     {/* <Label htmlFor="firstName">First name</Label> */}
@@ -145,18 +147,6 @@ const SubscribeForm = props => {
                   type="submit"
                   sx={{
                     pointerEvents: loading ? "none" : "inherit",
-                    "&:before": {
-                      content: "''",
-                      pointerEvents: "none",
-                      opacity: ".6",
-                      background:
-                        "radial-gradient(circle at 20% 35%, transparent 0, transparent 2px, #5697ff 3px, #5697ff 4px, transparent 4px), radial-gradient(circle at 75% 44%, transparent 0,  transparent 2px, #5697ff 3px, #5697ff 4px, transparent 4px), radial-gradient(circle at 46% 52%, transparent 0, transparent 4px, #5697ff 5px, #5697ff 6px, transparent 6px), radial-gradient(circle at 15% 58%, transparent 0, transparent 3px, #5697ff 4px, #5697ff 5px, transparent 5px)",
-                      width: "100%",
-                      height: "300%",
-                      top: "0",
-                      left: "0",
-                      position: "absolute",
-                    },
                     span: {
                       position: "relative",
                       zIndex: 999,

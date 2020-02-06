@@ -1,7 +1,8 @@
 // export { default } from "../gatsby-theme-ui-blog/layout"
 
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx, Styled, Container } from "theme-ui"
+import { alpha } from "@theme-ui/color"
 // import PropTypes from "prop-types"
 // import { useStaticQuery, graphql } from "gatsby"
 
@@ -40,7 +41,18 @@ export default ({ children }) => {
         >
           {children}
         </main>
-        <SubscribeForm />
+        <section
+          sx={{
+            pt: 6,
+            mt: 6,
+            borderTop: "1px solid",
+            borderColor: alpha("text", 0.1),
+          }}
+        >
+          <Container>
+            <SubscribeForm />
+          </Container>
+        </section>
         <Footer />
       </div>
     </Styled.root>
