@@ -1,10 +1,11 @@
 /** @jsx jsx */
 import React, { useState } from "react"
-import { jsx, Flex, Box, Button } from "theme-ui"
+import { jsx, Flex, Box, Button, Heading } from "theme-ui"
 import { alpha } from "@theme-ui/color"
 import { Formik, Field, Form, ErrorMessage } from "formik"
 import * as Yup from "yup"
 import axios from "axios"
+import { navigate } from "gatsby"
 
 const FORM_ID = process.env.CONVERTKIT_SIGNUP_FORM
 
@@ -16,7 +17,12 @@ const SubscribeSchema = Yup.object().shape({
 })
 
 const PostSubmissionMessage = ({ response }) => (
-  <div>
+  <div
+    sx={{
+      backgroundImage:
+        "linear-gradient(45deg, #000000 25%, #ffffff 25%, #ffffff 50%, #000000 50%, #000000 75%, #ffffff 75%, #ffffff 100%)",
+    }}
+  >
     Thanks so much for signing up! There's one last step. Please check your
     inbox for an email that just got sent. You'll need to click the confirmation
     link to receive any further emails.
@@ -76,9 +82,9 @@ const SubscribeForm = props => {
           >
             {(!submitted || loading) && (
               <>
-                <h3 id="notify-me">
+                <Heading as="h3" id="notify-me">
                   Get free previews of XYZ Course I’m working on.
-                </h3>
+                </Heading>
                 <Flex sx={{ flexDirection: ["column", "row"] }}>
                   <Box>
                     {/* <Label htmlFor="firstName">First name</Label> */}
@@ -164,7 +170,8 @@ const SubscribeForm = props => {
           </Form>
         )}
       />
-      {submitted && !loading && <PostSubmissionMessage response={response} />}
+      {/* {submitted && !loading && <PostSubmissionMessage response={response} />} */}
+      {submitted && !loading && navigate("/confirmed/")}
       {errorMessage && <div>{errorMessage}</div>}
     </div>
   )

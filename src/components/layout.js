@@ -12,7 +12,7 @@ import SubscribeForm from "./subscribeForm"
 
 import "../fonts/fonts.css"
 
-export default ({ children }) => {
+export default ({ subscribeForm = true, children }) => {
   // const data = useStaticQuery(graphql`
   //   query SiteTitleQuery {
   //     site {
@@ -36,23 +36,27 @@ export default ({ children }) => {
         <main
           sx={{
             width: "100%",
-            flex: "1 1 auto",
+            display: "flex",
+            flexDirection: "column",
+            flexGrow: 1,
           }}
         >
           {children}
         </main>
-        <section
-          sx={{
-            pt: [4, 5, 6],
-            mt: [4, 5, 6],
-            borderTop: "1px solid",
-            borderColor: alpha("text", 0.1),
-          }}
-        >
-          <Container>
-            <SubscribeForm />
-          </Container>
-        </section>
+        {subscribeForm && (
+          <section
+            sx={{
+              pt: [4, 5, 6],
+              mt: [4, 5, 6],
+              borderTop: "1px solid",
+              borderColor: alpha("text", 0.1),
+            }}
+          >
+            <Container>
+              <SubscribeForm />
+            </Container>
+          </section>
+        )}
         <Footer />
       </div>
     </Styled.root>
