@@ -1,6 +1,7 @@
 /** @jsx jsx */
-import { jsx, Flex, Box } from "theme-ui"
 import React, { useState } from "react"
+import { jsx, Flex, Box, Button } from "theme-ui"
+import { alpha } from "@theme-ui/color"
 import { Formik, Field, Form, ErrorMessage } from "formik"
 import * as Yup from "yup"
 import axios from "axios"
@@ -23,7 +24,7 @@ const PostSubmissionMessage = ({ response }) => (
 )
 
 async function handleSubmit(values, setState) {
-  const url = `https://api.convertkit.com/v3/forms/${FORM_ID}/subscriptions`
+  const url = `https://app.convertkit.com/forms/${FORM_ID}/subscriptions`
   setState({ submitted: true, loading: true })
 
   axios
@@ -89,14 +90,13 @@ const SubscribeForm = props => {
                       type="text"
                       sx={{
                         "::placeholder": {
-                          color: "gray",
-                          fontSize: 2,
+                          color: alpha("text", 0.5),
                         },
                         bg: "white",
                         border: "1px solid",
                         borderColor: "gray",
                         borderRadius: "4px",
-                        fontSize: 2,
+                        fontSize: [2, "18px"],
                         height: "48px",
                         padding: "0.75rem",
                         display: "block",
@@ -141,24 +141,24 @@ const SubscribeForm = props => {
                       className="field-error"
                     />
                   </Box>
+                  <Button
+                    data-element="submit"
+                    type="submit"
+                    sx={{
+                      pointerEvents: loading ? "none" : "inherit",
+                      span: {
+                        position: "relative",
+                        zIndex: 999,
+                        textShadow: "0 1px 5px rgba(0,0,0,0.3)",
+                      },
+                    }}
+                  >
+                    <span>
+                      {!loading && "Get Notified"}
+                      {/* {loading && <img src={LoadingAnimation} alt="Submitting" />} */}
+                    </span>
+                  </Button>
                 </Flex>
-                <button
-                  data-element="submit"
-                  type="submit"
-                  sx={{
-                    pointerEvents: loading ? "none" : "inherit",
-                    span: {
-                      position: "relative",
-                      zIndex: 999,
-                      textShadow: "0 1px 5px rgba(0,0,0,0.3)",
-                    },
-                  }}
-                >
-                  <span>
-                    {!loading && "Get Notified"}
-                    {/* {loading && <img src={LoadingAnimation} alt="Submitting" />} */}
-                  </span>
-                </button>
               </>
             )}
           </Form>
