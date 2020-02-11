@@ -12,10 +12,11 @@ export default () => (
         position: "relative",
         display: "flex",
         alignItems: "center",
+        py: 4,
         ":before": {
           position: "absolute",
           content: '""',
-          width: "320px",
+          width: ["25px", "60px", "220px", "320px"],
           right: 0,
           top: 0,
           bottom: 0,
@@ -28,7 +29,12 @@ export default () => (
       <Container>
         <Heading
           as="h3"
-          sx={{ fontSize: ["30px"], maxWidth: "510px", color: "white" }}
+          sx={{
+            fontSize: ["2", "3", "4", "30px"],
+            maxWidth: ["275px", "400px", "510px"],
+            color: "white",
+            fontWeight: ["semibold", "bold"],
+          }}
         >
           Thanks so much for signing up!
           <br />
@@ -40,18 +46,24 @@ export default () => (
         </Heading>
         <Text
           sx={{
-            maxWidth: "480px",
+            maxWidth: ["275px", "400px", "480px"],
             color: alpha("white", 0.8),
-            mt: ["48px"],
-            fontSize: [3],
+            mt: [4, 5, 6],
+            fontSize: [2, 2, 3],
           }}
         >
           If you don't see the email after a few minutes, you might check your
           spam folder or other filters and add nick@dayhaysoos.com to your
           contacts.
-          <br />
-          <br />
-          <br />
+        </Text>
+        <Text
+          sx={{
+            maxWidth: ["275px", "480px"],
+            color: alpha("white", 0.8),
+            mt: [4, 5, 6],
+            fontSize: [2, 2, 3],
+          }}
+        >
           Thanks,
           <br />
           Nick
