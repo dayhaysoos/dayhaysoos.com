@@ -38,6 +38,8 @@ export default {
   },
   styles: {
     root: {
+      WebkitFontSmoothing: "antialiased",
+      MozOsxFontSmoothing: "grayscale",
       fontFamily: "body",
       lineHeight: "body",
       fontWeight: "body",
