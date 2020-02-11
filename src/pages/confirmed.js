@@ -28,7 +28,7 @@ export default () => (
       <Container>
         <Heading
           as="h3"
-          sx={{ fontSize: ["30px"], maxWidth: "500px", color: "white" }}
+          sx={{ fontSize: ["30px"], maxWidth: "510px", color: "white" }}
         >
           Thanks so much for signing up!
           <br />
@@ -40,7 +40,7 @@ export default () => (
         </Heading>
         <Text
           sx={{
-            maxWidth: "460px",
+            maxWidth: "480px",
             color: alpha("white", 0.8),
             mt: ["48px"],
             fontSize: [3],

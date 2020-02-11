@@ -125,6 +125,7 @@ const SubscribeForm = props => {
                       name="email"
                       placeholder="Your email"
                       type="email"
+                      novalidate="novalidate"
                       sx={{
                         "::placeholder": {
                           color: "gray",
