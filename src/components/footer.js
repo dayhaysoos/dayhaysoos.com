@@ -11,8 +11,7 @@ const Footer = () => (
       flexDirection: ["column", "row"],
       justifyContent: "space-between",
       alignItems: "center",
-      mt: [4, 5],
-      mb: 4,
+      my: 4,
     }}
     as={Flex}
   >
@@ -28,7 +27,7 @@ const Footer = () => (
       sx={{
         justifyContent: ["space-around", "self-start"],
         width: ["100%", "auto"],
-        mt: [5, 0],
+        mt: [4, 0],
       }}
     >
       <Link
