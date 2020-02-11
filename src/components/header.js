@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, Flex } from "theme-ui"
+import { alpha } from "@theme-ui/color"
 import Link from "./link"
 
 import logo from "../images/logo.svg"
@@ -29,40 +30,42 @@ const Header = () => (
         sx={{
           variant: "links.regular",
           fontSize: [1, 2],
-          fontWeight: "semibold",
-          color: "text",
-          opacity: 0.7,
+          color: alpha("text", 0.7),
           ":hover": {
             textDecoration: "none",
             color: "primary",
             opacity: 1,
           },
+          "&.active": {
+            color: "primary",
+            fontWeight: "semibold",
+          },
         }}
+        activeClassName="active"
       >
         About
       </Link>
-      <button
-        type="button"
-        onClick={() => console.log("scroll to subscribe")}
+      <Link
+        to="#get-free-previews"
         sx={{
-          ml: [3, 4],
-          background: "none",
-          boxShadow: "none",
-          border: "none",
+          variant: "links.regular",
           fontSize: [1, 2],
-          fontWeight: "semibold",
-          p: 0,
-          color: "text",
-          opacity: 0.7,
-          cursor: "pointer",
+
+          color: alpha("text", 0.7),
           ":hover": {
-            opacity: 1,
+            textDecoration: "none",
             color: "primary",
+            opacity: 1,
           },
+          "&.active": {
+            color: "primary",
+            fontWeight: "semibold",
+          },
+          ml: [3, 4],
         }}
       >
         Subscribe
-      </button>
+      </Link>
     </Flex>
   </Flex>
 )

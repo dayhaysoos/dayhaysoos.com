@@ -82,12 +82,11 @@ const SubscribeForm = props => {
           >
             {(!submitted || loading) && (
               <>
-                <Heading as="h3" id="notify-me">
+                <Heading as="h2" id="get-free-previews">
                   Get free previews of XYZ Course I’m working on.
                 </Heading>
                 <Flex sx={{ flexDirection: ["column", "row"] }}>
                   <Box>
-                    {/* <Label htmlFor="firstName">First name</Label> */}
                     <Field
                       aria-label="first name"
                       aria-required="false"
@@ -118,14 +117,13 @@ const SubscribeForm = props => {
                       position: "relative",
                     }}
                   >
-                    {/* <Label htmlFor="emil">Email address</Label> */}
                     <Field
                       aria-label="your email"
                       aria-required="true"
                       name="email"
                       placeholder="Your email"
                       type="email"
-                      novalidate="novalidate"
+                      noValidate="novalidate"
                       sx={{
                         "::placeholder": {
                           color: "gray",
@@ -171,7 +169,6 @@ const SubscribeForm = props => {
           </Form>
         )}
       />
-      {/* {submitted && !loading && <PostSubmissionMessage response={response} />} */}
       {submitted && !loading && navigate("/confirmed/")}
       {errorMessage && <div>{errorMessage}</div>}
     </div>
