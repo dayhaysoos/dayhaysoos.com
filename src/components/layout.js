@@ -12,7 +12,7 @@ import SubscribeForm from "./subscribeForm"
 
 import "../fonts/fonts.css"
 
-export default ({ subscribeForm = true, children }) => {
+export default ({ subscribe = true, children }) => {
   // const data = useStaticQuery(graphql`
   //   query SiteTitleQuery {
   //     site {
@@ -32,7 +32,7 @@ export default ({ subscribeForm = true, children }) => {
           minHeight: "100vh",
         }}
       >
-        <Header />
+        <Header subscribe={subscribe} />
         <main
           sx={{
             width: "100%",
@@ -43,7 +43,7 @@ export default ({ subscribeForm = true, children }) => {
         >
           {children}
         </main>
-        {subscribeForm && (
+        {subscribe && (
           <section
             sx={{
               pt: [4, 5, 6],

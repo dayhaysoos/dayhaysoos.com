@@ -5,7 +5,7 @@ import Link from "./link"
 
 import logo from "../images/logo.svg"
 
-const Header = () => (
+const Header = ({ subscribe }) => (
   <Flex
     sx={{
       width: "100%",
@@ -45,27 +45,29 @@ const Header = () => (
       >
         About
       </Link>
-      <Link
-        to="#get-free-previews"
-        sx={{
-          variant: "links.regular",
-          fontSize: [1, 2],
+      {subscribe && (
+        <Link
+          to="#get-free-previews"
+          sx={{
+            variant: "links.regular",
+            fontSize: [1, 2],
 
-          color: alpha("text", 0.7),
-          ":hover": {
-            textDecoration: "none",
-            color: "primary",
-            opacity: 1,
-          },
-          "&.active": {
-            color: "primary",
-            fontWeight: "semibold",
-          },
-          ml: [3, 4],
-        }}
-      >
-        Subscribe
-      </Link>
+            color: alpha("text", 0.7),
+            ":hover": {
+              textDecoration: "none",
+              color: "primary",
+              opacity: 1,
+            },
+            "&.active": {
+              color: "primary",
+              fontWeight: "semibold",
+            },
+            ml: [3, 4],
+          }}
+        >
+          Subscribe
+        </Link>
+      )}
     </Flex>
   </Flex>
 )

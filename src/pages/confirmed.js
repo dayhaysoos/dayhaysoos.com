@@ -4,7 +4,7 @@ import { alpha } from "@theme-ui/color"
 import Layout from "../components/layout"
 
 export default () => (
-  <Layout subscribeForm={false}>
+  <Layout subscribe={false}>
     <section
       sx={{
         flexGrow: 1,
