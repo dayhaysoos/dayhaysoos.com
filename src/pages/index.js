@@ -40,6 +40,7 @@ const IndexPage = () => {
       <div
         sx={{
           maxWidth: "1360px",
+          width: "100%",
           mx: "auto",
           backgroundImage: `url("${portrait}")`,
           backgroundRepeat: "no-repeat",

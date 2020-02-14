@@ -82,8 +82,27 @@ const SubscribeForm = props => {
           >
             {(!submitted || loading) && (
               <>
-                <Heading as="h2" id="get-free-previews">
+                <Heading
+                  as="h2"
+                  id="get-free-previews"
+                  sx={{
+                    fontWeight: "bold",
+                    maxWidth: "620px",
+                    fontSize: [4, 4, 5, 6],
+                    mb: 3,
+                  }}
+                >
                   Get free previews of XYZ Course I’m working on.
+                </Heading>
+                <Heading
+                  as="h4"
+                  sx={{
+                    fontWeight: "semibold",
+                    fontSize: ["15px", "15px", 2],
+                    mb: 4,
+                  }}
+                >
+                  There will be no spam and you can unsubscribe at any time.
                 </Heading>
                 <Flex sx={{ flexDirection: ["column", "row"] }}>
                   <Box>
