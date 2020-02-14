@@ -54,10 +54,9 @@ const SubscribeForm = props => {
         onSubmit={values => handleSubmit(values, setState)}
       >
         {({ isValid, values, isSubmitting }) => {
-          console.log("isValid: ", isValid)
-          console.log("isSubmitting: ", isSubmitting)
           return (
             <Form
+              autoComplete="off"
               sx={{
                 ".field-error": {
                   color: "red",
@@ -159,6 +158,10 @@ const SubscribeForm = props => {
                       sx={{
                         ml: [0, 0, 3],
                         mt: [2, 2, 0],
+                        px: 4,
+                        bg: "text",
+                        fontSize: ["16px", "16px", "18px"],
+                        fontWeight: "bold",
                         borderRadius: 0,
                         pointerEvents: isSubmitting ? "none" : "initial",
                         cursor:
