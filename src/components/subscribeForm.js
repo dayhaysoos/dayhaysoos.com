@@ -31,7 +31,7 @@ const PostSubmissionMessage = ({ response }) => (
 
 async function handleSubmit(values, setState) {
   const url = `https://app.convertkit.com/forms/${FORM_ID}/subscriptions`
-  setState({ submitted: true, loading: true })
+  setState({ submitted: false })
 
   axios
     .post(url, { ...values, api_key: process.env.CONVERTKIT_PUBLIC_KEY })
@@ -39,7 +39,6 @@ async function handleSubmit(values, setState) {
       ({ data }) => {
         setState({
           submitted: true,
-          loading: false,
           response: data,
           errorMessage: null,
         })
@@ -47,7 +46,6 @@ async function handleSubmit(values, setState) {
       err => {
         setState({
           submitted: false,
-          loading: false,
           errorMessage: "Something went wrong!",
         })
       }
@@ -57,7 +55,7 @@ async function handleSubmit(values, setState) {
 const SubscribeForm = props => {
   const [state, setState] = useState({ submitted: false })
 
-  const { submitted, loading, response, errorMessage } = state
+  const { submitted, response, errorMessage } = state
 
   return (
     <div {...props}>
@@ -66,129 +64,132 @@ const SubscribeForm = props => {
           email: "",
           name: "",
         }}
+        validateOnMount
         validationSchema={SubscribeSchema}
         onSubmit={values => handleSubmit(values, setState)}
-        render={({ errors }) => (
-          <Form
-            sx={{
-              ".field-error": {
-                color: "red",
-                fontSize: 2,
-                lineHeight: 2,
-                position: "absolute",
-                maxWidth: "300px",
-              },
-            }}
-          >
-            {(!submitted || loading) && (
-              <>
-                <Heading
-                  as="h2"
-                  id="get-free-previews"
-                  sx={{
-                    fontWeight: "bold",
-                    maxWidth: "620px",
-                    fontSize: [4, 4, 5, 6],
-                    mb: 3,
-                  }}
-                >
-                  Get free previews of XYZ Course I’m working on.
-                </Heading>
-                <Heading
-                  as="h4"
-                  sx={{
-                    fontWeight: "semibold",
-                    fontSize: ["15px", "15px", 2],
-                    mb: 4,
-                  }}
-                >
-                  There will be no spam and you can unsubscribe at any time.
-                </Heading>
-                <Flex sx={{ flexDirection: ["column", "row"] }}>
-                  <Box>
-                    <Field
-                      aria-label="first name"
-                      aria-required="false"
-                      name="name"
-                      placeholder="First name"
-                      type="text"
-                      sx={{
-                        "::placeholder": {
-                          color: alpha("text", 0.5),
-                        },
-                        bg: "white",
-                        border: "1px solid",
-                        borderColor: "gray",
-                        borderRadius: "4px",
-                        fontSize: [2, "18px"],
-                        height: "48px",
-                        padding: "0.75rem",
-                        display: "block",
-                        width: "100%",
-                      }}
-                    />
-                  </Box>
-                  <Box
+      >
+        {({ errors, isValid }) => {
+          return (
+            <Form
+              sx={{
+                ".field-error": {
+                  color: "red",
+                  fontSize: 2,
+                  lineHeight: 2,
+                  position: "absolute",
+                  maxWidth: "300px",
+                },
+              }}
+            >
+              {!submitted && (
+                <>
+                  <Heading
+                    as="h2"
+                    id="get-free-previews"
                     sx={{
-                      flexBasis: ["100%", "100%", "50%"],
-                      pl: [0, 0, 2],
-                      pb: 4,
-                      position: "relative",
+                      fontWeight: "bold",
+                      maxWidth: "620px",
+                      fontSize: [4, 4, 5, 6],
+                      mb: 3,
                     }}
                   >
-                    <Field
-                      aria-label="your email"
-                      aria-required="true"
-                      name="email"
-                      placeholder="Your email"
-                      type="email"
-                      noValidate="novalidate"
-                      sx={{
-                        "::placeholder": {
-                          color: "gray",
-                          fontSize: 2,
-                        },
-                        bg: "white",
-                        border: "1px solid",
-                        borderColor: "gray",
-                        borderRadius: "4px",
-                        fontSize: 2,
-                        height: "48px",
-                        padding: "0.75rem",
-                        display: "block",
-                        width: "100%",
-                      }}
-                    />
-                    <ErrorMessage
-                      name="email"
-                      component="div"
-                      className="field-error"
-                    />
-                  </Box>
-                  <Button
-                    data-element="submit"
-                    type="submit"
+                    Get free previews of XYZ Course I’m working on.
+                  </Heading>
+                  <Heading
+                    as="h4"
                     sx={{
-                      pointerEvents: loading ? "none" : "inherit",
-                      span: {
+                      fontWeight: "semibold",
+                      fontSize: ["15px", "15px", 2],
+                      mb: 4,
+                    }}
+                  >
+                    There will be no spam and you can unsubscribe at any time.
+                  </Heading>
+                  <Flex sx={{ flexDirection: ["column", "row"] }}>
+                    <Box>
+                      <Field
+                        aria-label="first name"
+                        aria-required="false"
+                        name="name"
+                        placeholder="First name"
+                        type="text"
+                        sx={{
+                          "::placeholder": {
+                            color: alpha("text", 0.5),
+                          },
+                          bg: "white",
+                          border: "2px solid",
+                          borderColor: "gray",
+                          borderRadius: 0,
+                          fontSize: [2, "18px"],
+                          height: "56px",
+                          padding: "0.75rem",
+                          display: "block",
+                          width: "100%",
+                        }}
+                      />
+                    </Box>
+                    <Box
+                      sx={{
+                        flexBasis: ["100%", "100%", "50%"],
+                        ml: [0, 0, 3],
+                        mt: [2, 2, 0],
                         position: "relative",
-                        zIndex: 999,
-                        textShadow: "0 1px 5px rgba(0,0,0,0.3)",
-                      },
-                    }}
-                  >
-                    <span>
-                      {!loading && "Get Notified"}
-                      {/* {loading && <img src={LoadingAnimation} alt="Submitting" />} */}
-                    </span>
-                  </Button>
-                </Flex>
-              </>
-            )}
-          </Form>
-        )}
-      />
-      {submitted && !loading && navigate("/confirmed/")}
+                      }}
+                    >
+                      <Field
+                        aria-label="your email"
+                        aria-required="true"
+                        name="email"
+                        placeholder="Your email"
+                        type="email"
+                        noValidate="novalidate"
+                        sx={{
+                          "::placeholder": {
+                            color: alpha("text", 0.5),
+                          },
+                          bg: "white",
+                          border: "2px solid",
+                          borderColor: "gray",
+                          borderRadius: 0,
+                          fontSize: [2, "18px"],
+                          height: "56px",
+                          padding: "0.75rem",
+                          display: "block",
+                          width: "100%",
+                        }}
+                      />
+                      <ErrorMessage
+                        name="email"
+                        component="div"
+                        className="field-error"
+                      />
+                    </Box>
+                    <Button
+                      data-element="submit"
+                      type="submit"
+                      disabled={!isValid}
+                      sx={{
+                        ml: [0, 0, 3],
+                        mt: [2, 2, 0],
+                        pointerEvents: !isValid ? "none" : "inherit",
+                        span: {
+                          position: "relative",
+                          zIndex: 999,
+                          textShadow: "0 1px 5px rgba(0,0,0,0.3)",
+                        },
+                      }}
+                    >
+                      <span>Get Notified</span>
+                    </Button>
+                  </Flex>
+                </>
+              )}
+            </Form>
+          )
+        }}
+      </Formik>
+      {submitted && navigate("/confirmed/")}
       {errorMessage && <div>{errorMessage}</div>}
     </div>
   )
