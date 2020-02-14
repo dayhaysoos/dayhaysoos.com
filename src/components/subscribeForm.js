@@ -16,19 +16,6 @@ const SubscribeSchema = Yup.object().shape({
   name: Yup.string(),
 })
 
-const PostSubmissionMessage = ({ response }) => (
-  <div
-    sx={{
-      backgroundImage:
-        "linear-gradient(45deg, #000000 25%, #ffffff 25%, #ffffff 50%, #000000 50%, #000000 75%, #ffffff 75%, #ffffff 100%)",
-    }}
-  >
-    Thanks so much for signing up! There's one last step. Please check your
-    inbox for an email that just got sent. You'll need to click the confirmation
-    link to receive any further emails.
-  </div>
-)
-
 async function handleSubmit(values, setState) {
   const url = `https://app.convertkit.com/forms/${FORM_ID}/subscriptions`
   setState({ submitted: false })
@@ -39,7 +26,6 @@ async function handleSubmit(values, setState) {
       ({ data }) => {
         setState({
           submitted: true,
-          response: data,
           errorMessage: null,
         })
       },
@@ -55,7 +41,7 @@ async function handleSubmit(values, setState) {
 const SubscribeForm = props => {
   const [state, setState] = useState({ submitted: false })
 
-  const { submitted, response, errorMessage } = state
+  const { submitted, errorMessage } = state
 
   return (
     <div {...props}>
@@ -68,7 +54,7 @@ const SubscribeForm = props => {
         validationSchema={SubscribeSchema}
         onSubmit={values => handleSubmit(values, setState)}
       >
-        {({ errors, isValid }) => {
+        {({ isValid }) => {
           return (
             <Form
               sx={{
@@ -172,7 +158,6 @@ const SubscribeForm = props => {
                       sx={{
                         ml: [0, 0, 3],
                         mt: [2, 2, 0],
-                        pointerEvents: !isValid ? "none" : "inherit",
                         span: {
                           position: "relative",
                           zIndex: 999,
