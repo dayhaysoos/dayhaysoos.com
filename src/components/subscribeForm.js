@@ -50,11 +50,12 @@ const SubscribeForm = props => {
           email: "",
           name: "",
         }}
-        validateOnMount
         validationSchema={SubscribeSchema}
         onSubmit={values => handleSubmit(values, setState)}
       >
-        {({ isValid }) => {
+        {({ isValid, values, isSubmitting }) => {
+          console.log("isValid: ", isValid)
+          console.log("isSubmitting: ", isSubmitting)
           return (
             <Form
               sx={{
@@ -101,9 +102,9 @@ const SubscribeForm = props => {
                         type="text"
                         sx={{
                           "::placeholder": {
-                            color: alpha("text", 0.5),
+                            color: alpha("text", 0.7),
                           },
-                          bg: "white",
+                          background: "white",
                           border: "2px solid",
                           borderColor: "gray",
                           borderRadius: 0,
@@ -132,7 +133,7 @@ const SubscribeForm = props => {
                         noValidate="novalidate"
                         sx={{
                           "::placeholder": {
-                            color: alpha("text", 0.5),
+                            color: alpha("text", 0.7),
                           },
                           bg: "white",
                           border: "2px solid",
@@ -154,18 +155,19 @@ const SubscribeForm = props => {
                     <Button
                       data-element="submit"
                       type="submit"
-                      disabled={!isValid}
+                      disabled={values.email === "" || !isValid}
                       sx={{
                         ml: [0, 0, 3],
                         mt: [2, 2, 0],
-                        span: {
-                          position: "relative",
-                          zIndex: 999,
-                          textShadow: "0 1px 5px rgba(0,0,0,0.3)",
-                        },
+                        borderRadius: 0,
+                        pointerEvents: isSubmitting ? "none" : "initial",
+                        cursor:
+                          values.email === "" || !isValid
+                            ? "not-allowed"
+                            : "pointer",
                       }}
                     >
-                      <span>Get Notified</span>
+                      {isSubmitting ? "Wait..." : "Join Now"}
                     </Button>
                   </Flex>
                 </>
