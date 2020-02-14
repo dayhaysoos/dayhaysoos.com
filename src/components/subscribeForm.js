@@ -91,8 +91,12 @@ const SubscribeForm = props => {
                   >
                     There will be no spam and you can unsubscribe at any time.
                   </Heading>
-                  <Flex sx={{ flexDirection: ["column", "row"] }}>
-                    <Box>
+                  <Flex sx={{ flexDirection: ["column", "column", "row"] }}>
+                    <Box
+                      sx={{
+                        flexBasis: ["100%", "100%", "40%"],
+                      }}
+                    >
                       <Field
                         aria-label="first name"
                         aria-required="false"
@@ -117,7 +121,7 @@ const SubscribeForm = props => {
                     </Box>
                     <Box
                       sx={{
-                        flexBasis: ["100%", "100%", "50%"],
+                        flexBasis: ["100%", "100%", "60%"],
                         ml: [0, 0, 3],
                         mt: [2, 2, 0],
                         position: "relative",
@@ -156,6 +160,7 @@ const SubscribeForm = props => {
                       type="submit"
                       disabled={values.email === "" || !isValid}
                       sx={{
+                        flexShrink: 0,
                         ml: [0, 0, 3],
                         mt: [2, 2, 0],
                         px: 4,
@@ -163,6 +168,7 @@ const SubscribeForm = props => {
                         fontSize: ["16px", "16px", "18px"],
                         fontWeight: "bold",
                         borderRadius: 0,
+                        height: "56px",
                         pointerEvents: isSubmitting ? "none" : "initial",
                         cursor:
                           values.email === "" || !isValid
