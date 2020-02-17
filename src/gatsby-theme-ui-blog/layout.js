@@ -7,7 +7,6 @@ import PostShareBlock from "../components/postShareBlock"
 import Footer from "../components/footer"
 
 export default props => {
-  console.log("props: ", props)
   return (
     <div
       sx={{
