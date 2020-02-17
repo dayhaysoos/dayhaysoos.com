@@ -11,7 +11,8 @@ const Footer = () => (
       flexDirection: ["column", "row"],
       justifyContent: "space-between",
       alignItems: "center",
-      my: 4,
+      mt: 4,
+      mb: [4, 4, 5, 6],
     }}
     as={Flex}
   >
