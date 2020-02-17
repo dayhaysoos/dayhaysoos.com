@@ -1,3 +1,5 @@
+import nightOwl from "@theme-ui/prism/presets/night-owl.json"
+
 export default {
   breakpoints: ["640px", "768px", "992px", "1200px", "1920px"],
   colors: {
@@ -112,8 +114,10 @@ export default {
       },
     },
     code: {
-      fontFamily: "monospace",
-      fontSize: "inherit",
+      ...nightOwl,
+      p: [2, 2, 3],
+      my: [4, 4, 5],
+      borderRadius: "5px",
     },
     img: {
       maxWidth: "100%",
