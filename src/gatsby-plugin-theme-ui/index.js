@@ -47,6 +47,7 @@ export default {
       fontFamily: "body",
       lineHeight: "body",
       fontWeight: "body",
+      fontSize: [2, 2, 3],
       "h1, h2, h3, h4, h5, h6": {
         a: {
           color: "inherit",
@@ -102,10 +103,9 @@ export default {
       fontWeight: "body",
       lineHeight: "body",
     },
-    // a: {
-    //   color: "primary",
-    //   fontWeight: 900,
-    // },
+    a: {
+      variant: "links.regular",
+    },
     pre: {
       fontFamily: "monospace",
       overflowX: "auto",
