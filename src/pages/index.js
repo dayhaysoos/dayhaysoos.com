@@ -97,9 +97,12 @@ const IndexPage = () => {
           >
             Nick — A Developer from Boston
             <br sx={{ display: ["none", "block"] }} /> teaching React, React
-            Native <br sx={{ display: ["none", "block"] }} /> and JAMstack.
-            Author of the <br sx={{ display: ["none", "block"] }} /> premier{" "}
-            <a href="/">Tekken frame data app.</a>
+            Native <br sx={{ display: ["none", "block"] }} /> and Gatsby. Author
+            of the <br sx={{ display: ["none", "block"] }} /> premier Tekken
+            frame data app,{" "}
+            <a href="https://apps.apple.com/us/app/t7-chicken-plus/id1443049601">
+              T7 Chicken Plus
+            </a>
           </Heading>
           <Link
             to="/"
