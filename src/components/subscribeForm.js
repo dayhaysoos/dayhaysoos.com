@@ -7,21 +7,21 @@ import * as Yup from "yup"
 import axios from "axios"
 import { navigate } from "gatsby"
 
-const FORM_ID = process.env.CONVERTKIT_SIGNUP_FORM
+const FORM_ID = process.env.GATSBY_CONVERTKIT_SIGNUP_FORM
 
 const SubscribeSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email address")
     .required("*Email is required"),
-  name: Yup.string(),
+  first_name: Yup.string(),
 })
 
 async function handleSubmit(values, setState) {
-  const url = `https://app.convertkit.com/forms/${FORM_ID}/subscriptions`
+  const url = `https://api.convertkit.com/v3/forms/${FORM_ID}/subscribe`
   setState({ submitted: false })
 
   axios
-    .post(url, { ...values, api_key: process.env.CONVERTKIT_PUBLIC_KEY })
+    .post(url, { ...values, api_key: process.env.GATSBY_CONVERTKIT_PUBLIC_KEY })
     .then(
       ({ data }) => {
         setState({
@@ -48,7 +48,7 @@ const SubscribeForm = props => {
       <Formik
         initialValues={{
           email: "",
-          name: "",
+          first_name: "",
         }}
         validationSchema={SubscribeSchema}
         onSubmit={values => handleSubmit(values, setState)}
@@ -100,9 +100,11 @@ const SubscribeForm = props => {
                       <Field
                         aria-label="first name"
                         aria-required="false"
-                        name="name"
+                        name="first_name"
+                        id="first_name"
                         placeholder="First name"
                         type="text"
+                        autocomplete="given-name"
                         sx={{
                           "::placeholder": {
                             color: alpha("text", 0.7),
@@ -131,9 +133,11 @@ const SubscribeForm = props => {
                         aria-label="your email"
                         aria-required="true"
                         name="email"
+                        id="email"
                         placeholder="Your email"
                         type="email"
                         noValidate="novalidate"
+                        autocomplete="email"
                         sx={{
                           "::placeholder": {
                             color: alpha("text", 0.7),
