@@ -105,7 +105,7 @@ const IndexPage = () => {
             </a>
           </Heading>
           <Link
-            to="/"
+            to="/about"
             sx={{
               variant: "links.regular",
               mt: [4, 5],

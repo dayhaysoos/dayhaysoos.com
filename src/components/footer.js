@@ -52,8 +52,8 @@ const Footer = () => (
       >
         Twitter
       </Link>
-      <Link
-        to="#"
+      <a
+        href={"mailto:nick@dayhaysoos.com"}
         sx={{
           variant: "links.regular",
           fontSize: [1, 2],
@@ -62,7 +62,7 @@ const Footer = () => (
         }}
       >
         Email Me
-      </Link>
+      </a>
     </Flex>
   </Container>
 )

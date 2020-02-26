@@ -79,7 +79,8 @@ const SubscribeForm = props => {
                       mb: 3,
                     }}
                   >
-                    Get free previews of XYZ Course I’m working on.
+                    Get e-mails from me about coding, getting projects done and
+                    whatever else comes to mind
                   </Heading>
                   <Heading
                     as="h4"
@@ -90,6 +91,8 @@ const SubscribeForm = props => {
                     }}
                   >
                     There will be no spam and you can unsubscribe at any time.
+                    Get early access to new content and more personal insights
+                    on the cool things I'm working on
                   </Heading>
                   <Flex sx={{ flexDirection: ["column", "column", "row"] }}>
                     <Box
