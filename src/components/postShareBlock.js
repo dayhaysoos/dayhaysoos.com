@@ -47,7 +47,7 @@ export default () => {
               textAlign: ["center", "center", "left"],
             }}
           >
-            Hi, I’m Nick, a developer from Boston.
+            Hi, I’m Nick, a React Native and Gatsby developer from Boston.
             <br />
             I’m the author of this blog, nice to meet you!
           </Heading>
