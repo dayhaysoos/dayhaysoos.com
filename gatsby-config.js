@@ -36,8 +36,6 @@ module.exports = {
     {
       resolve: "gatsby-plugin-fathom",
       options: {
-        // Fathom server URL. Defaults to `cdn.usefathom.com`
-        trackingUrl: "https://cdn.usefathom.com/tracker.js",
         // Unique site id
         siteId: "FVFXXUAR",
         // Domain whitelist
