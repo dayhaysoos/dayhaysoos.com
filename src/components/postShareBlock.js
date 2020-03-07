@@ -79,8 +79,8 @@ export default () => {
               },
             }}
           >
-            <li>
-              <Link to="#" sx={{ variant: "links.regular" }}>
+            {/* <li>
+              <a href="#" sx={{ variant: "links.regular" }}>
                 <img
                   src={iconTwitter}
                   alt="Share this article with your friends on Twitter"
@@ -88,20 +88,20 @@ export default () => {
                 <span sx={{ ml: 3 }}>
                   Share this article with your friends on Twitter
                 </span>
-              </Link>
-            </li>
-            <li>
+              </a>
+            </li> */}
+            {/* <li>
               <Link to="#" sx={{ variant: "links.regular" }}>
                 <img src={iconEdit} alt="Edit this article on github" />
                 <span sx={{ ml: 3 }}>Edit this article on github</span>
               </Link>
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               <Link to="#" sx={{ variant: "links.regular" }}>
                 <img src={iconRss} alt="RSS Feed" />
                 <span sx={{ ml: 3 }}>RSS Feed</span>
               </Link>
-            </li>
+            </li> */}
           </ul>
           <img
             src={slashes}

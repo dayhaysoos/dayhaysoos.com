@@ -33,6 +33,17 @@ module.exports = {
         icon: `src/images/favicon.svg`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: "gatsby-plugin-fathom",
+      options: {
+        // Fathom server URL. Defaults to `cdn.usefathom.com`
+        trackingUrl: "https://cdn.usefathom.com/tracker.js",
+        // Unique site id
+        siteId: "FVFXXUAR",
+        // Domain whitelist
+        whitelistHostnames: ["dayhaysoos.com"],
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

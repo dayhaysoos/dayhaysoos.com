@@ -107,7 +107,7 @@ const SubscribeForm = props => {
                         id="first_name"
                         placeholder="First name"
                         type="text"
-                        autocomplete="given-name"
+                        autoComplete="given-name"
                         sx={{
                           "::placeholder": {
                             color: alpha("text", 0.7),
@@ -140,7 +140,7 @@ const SubscribeForm = props => {
                         placeholder="Your email"
                         type="email"
                         noValidate="novalidate"
-                        autocomplete="email"
+                        autoComplete="email"
                         sx={{
                           "::placeholder": {
                             color: alpha("text", 0.7),
