@@ -9,3 +9,5 @@ fields:
   name: date
   label: date
   default: now
+pages:
+- content/posts/my-stripe-dashboard-wishlist.mdx
