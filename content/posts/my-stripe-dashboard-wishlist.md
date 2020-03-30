@@ -13,6 +13,4 @@ Unfortunately, because I'm trying to do all of this without the need of a server
 
 ### Product Descriptions
 
-There is no way through the dashboard to create product descriptions
-
-![Stripe Product Creation Page](/uploads/Screen Shot 2020-03-29 at 9.52.30 PM.png)
+There is no way through the dashboard to create product description
