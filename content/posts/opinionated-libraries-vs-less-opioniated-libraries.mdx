@@ -3,3 +3,22 @@ date: 2020-04-08T22:48:10Z
 title: Opinionated Libraries vs Less-Opioniated Libraries
 
 ---
+A few months ago, I remember telling someone how much I loved theme-ui for building UIs in my Gatsby apps. The big pitch I led with was, "theme-ui is very un-opinionated...".
+
+The response I got was, "Nah, man, I need something that's heavily opinionated".
+
+I have not been able to stop thinking about this ever since, so now I'm writing my....opinions on this. 
+
+I have found that I enjoy opinionated libraries, as well as less-opinionated libraries all the same. I guess what it boils down to, for me at least, is that some things should be opinionated while others, not so much.
+
+## What does it mean when a library is opinionated?
+
+Well, in my opinion, this means that the library in a way is very specific in what it does and the way it should be used. This means that the library does the job it's supposed to do in a way that might prevent it from being extended or expanded on. Let's think about redux. 
+
+I love redux. Many people on Twitter have expressed their hatred for redux. I think the problem with redux initially, is the fact that it wasn't very opinionated at all. Which ends up leading to tons of different ways of using the library. Through an agency, I've seen tons of redux projects. Many had variations of "best practices". Some projects were miserable to work on because you can't tell your ass from your elbow, while others were easier to reason about. 
+
+The maintainers of redux ended up making something called `redux-tool-kit`. Which is literally pitched as, "The official, opinionated, batteries-included toolset for efficient Redux development".
+
+`redux-tool-kit` basically took most of the industry's best practices and made a library on top of it to enforce those best practices. A few small things to mention is including redux-thunk,  mapping functional components to key values in `slices` and removing the need for `redux.connect` to bridge the gap between your React components and redux store. 
+
+Because the community struggles with all the different redux implementations, an opinionated library comes out to ensure that everyone is using the library the same way. This ensures that people aren't doing whatever they want when implementing redux in an app, which makes it significantly easier to learn and enjoy.
