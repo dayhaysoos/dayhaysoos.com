@@ -10,4 +10,4 @@ fields:
   label: date
   default: now
 pages:
-- content/posts/my-stripe-dashboard-wishlist.mdx
+- content/posts/opinionated-libraries-vs-less-opioniated-libraries.mdx
