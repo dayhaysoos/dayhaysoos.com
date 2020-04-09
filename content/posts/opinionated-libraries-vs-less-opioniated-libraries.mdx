@@ -25,7 +25,7 @@ Because the community struggles with all the different redux implementations, an
 
 ## What does it mean to be less opinionated?
 
-Being less opinionated means that the library or tool doesn't restrict you from doing things in a limited amount of ways. In many ways, React itself suffers from this problem. If you were to choose 10 random React projects that existed on github, you'd probably seem some really different implementations. Class components or functional, utility functions vs functions being defined at the component level, separate files for styling, different styling libraries, prop drilling or composing components, the list can go on. You sort of have to have an ear to the JavaScript community to know what the consensus is, and that can change at any given moment in this industry.
+Being less opinionated means that the library or tool doesn't restrict you from doing things in a limited amount of ways. In many ways, React itself suffers from this problem. If you were to choose 10 random React projects that existed on github, you'd probably see some really different implementations. Class components or functional, utility functions vs functions being defined at the component level, separate files for styling, different styling libraries, prop drilling or composing components, the list can go on. You sort of have to have an ear to the JavaScript community to know what the consensus is, and that can change at any given moment in this industry.
 
 I really love Theme-UI for the lack of opinion on how components should be styled. Better yet, with the theming system and the sx prop, I'm allowed to extend my own opinions on how things should be styled through the library. With other UI libraries and theming systems, you have to learn their unfamiliar APIs for things like Grid layouts and buttons and sometimes when you need to do something kinda different with your styles, those APIs end up holding you back and slowing down your progress.
 
@@ -35,7 +35,7 @@ Does this mean that React would be better if it was more opinionated? I personal
 
 (I'm really struggling here to not make jokes about saying, "Well, in my opinion..." btw)
 
-#### When it's solving a problem that everyone has.
+### When it's solving a problem that everyone has.
 
 Let's take routing for example. Every web developer needs to do this at some point.
 
@@ -43,14 +43,46 @@ React, being the flexible tool that it is, has quite a few options for handling 
 
 Another example would be how we handle responsive design. Many UI libraries have built-in CSS classes that determine whether or not content should be laid out horizontally or vertically based on screen width. They provide their own padding, margin and box shadow by default. Of course, you're allowed to overwrite or apply more styling. These types of opinionated approaches allow you to get things done faster and they look better sooner rather than later.
 
-#### When a common problem is difficult to implement
+### When a common problem is difficult to implement
 
 Thinking back on redux, this is _exactly_ why redux-tool-kit exists. Redux was already very flexible and being mostly used in a very flexible UI library probably didn't help. I have to admit, it took me a very long time to feel comfortable with redux probably because of how many different implementations of it I've seen. The problem is less about the high-level idea of how it works, it's more about how everyone structured using it because there were no real guidelines on best practices. 
 
-#### When a problem is very specific
+### When a problem is very specific
 
 Going to plug myself here, but something I'm working on specifically is shopping carts for Stripe products. I'm working on a hooks library for this: [https://github.com/dayhaysoos/use-stripe-cart](https://github.com/dayhaysoos/use-stripe-cart "https://github.com/dayhaysoos/use-stripe-cart")
 
 Shopping cart logic is something we all have to deal with at one point or another. There are plenty of shopping cart tools out there. Seriously. There are a **lot.** Mine is specifically for Stripe products and getting your customers into the Stripe checkout experience. Everything about the way this library is built has Stripe in mind. Because I have a solid understanding of how Stripe product data should be formatted before getting to Stripe's Checkout experience, I'm determining what values are important and how data should be passed to the CartProvider.
 
 Because this lib is going to be so opinionated and specific, you won't have to think about how things are handled under the hood. Just pass data to the library the way it expects, and you'll get back the things you actually care about.
+
+## The downside to opinionated approaches.
+
+Keep in mind, that these downsides are really just possibilities you may face when using something that makes being opinionated a feature.
+
+### Might not fit all your needs
+
+It's very likely you'll come across a situation where you need to do something very specific. The library you're using probably handles 95% of all your needs, however, this 5% is probably something that you assumed the library can do, but it can't. Then you end up creating some weird workaround to cooperate with the library only to find out it's still not working perfectly. 
+
+If I had to be completely honest, this is basically the life of a developer.
+
+When choosing between different libraries, you often might have to weigh between what things they make easier vs what things they make harder and settle for that may create less friction.
+
+#### Might be hard to customize
+
+This one is more specifically about css tools than anything. Like the previous point, sometimes you just have to do something different with your design that the library doesn't really cover. I've often had to fight with css libraries, trying to get things to be positioned a specific way or have the perfect amount of padding or can't get something to look nice on mobile because of whatever. I'm sure these things translate to other tools in the JS ecosystem, but this is one I'm sure we come across way more.
+
+## When are less opinionated libraries a good thing?
+
+Overall, fewer opinions mean that you have a lot more freedom. 
+
+### When you need more control.
+
+Sometimes, opinionated libraries or tools have too much "magic" going on. Perhaps it can meet your needs, but what happens if something goes wrong? Will you know exactly how to troubleshoot and solve the problem? Would you have to open up an issue and communicate with the maintainer for days until it gets resolved on their end? When you aren't committed to an opinionated library
+
+(I might have to come back here and fill more stuff in)
+
+## Conclusion
+
+One thing I'd like to make very clear is that there are no right or wrong answers; much like our own actual opinions. Ideally, the goal we strive for as developers is to have as little friction as possible. Sometimes friction can boil down to many things, perhaps the mental model behind using it is just not clicking, maybe it doesn't play well with your environment, maybe recent updates broke it. In an unopinionated library, friction can look like doing a lot of manual work, not really knowing how to go about reaching your goal, having to refactor a lot of things due to lack of an opinionated approach. The key is a strong balance between opinioned and less-opinionated with the hopes to maintain a frictionless experience. 
+
+### 
