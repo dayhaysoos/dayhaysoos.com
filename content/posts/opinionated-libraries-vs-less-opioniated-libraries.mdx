@@ -7,19 +7,19 @@ A few months ago, I remember telling someone how much I loved theme-ui for build
 
 The response I got was, "Nah, man, I need something that's heavily opinionated".
 
-I have not been able to stop thinking about this ever since, so now I'm writing my....opinions on this. 
+I have not been able to stop thinking about this ever since, so now I'm writing my....opinions on this.
 
 I have found that I enjoy opinionated libraries, as well as less-opinionated libraries all the same. I guess what it boils down to, for me at least, is that some things should be opinionated while others, not so much.
 
 ## What does it mean when a library is opinionated?
 
-Well, in my opinion, this means that the library in a way is very specific in what it does and the way it should be used. This means that the library does the job it's supposed to do in a way that might prevent it from being extended or expanded on. Let's think about redux. 
+Well, in my opinion, this means that the library in a way is very specific in what it does and the way it should be used. This means that the library does the job it's supposed to do in a way that might prevent it from being extended or expanded on. Let's think about redux.
 
-I love redux. Many people on Twitter have expressed their hatred for redux. I think the problem with redux initially, is the fact that it wasn't very opinionated at all. Which ends up leading to tons of different ways of using the library. Through an agency, I've seen tons of redux projects. Many had variations of "best practices". Some projects were miserable to work on because you can't tell your ass from your elbow, while others were easier to reason about. 
+I love redux. Many people on Twitter have expressed their hatred for redux. I think the problem with redux initially, is the fact that it wasn't very opinionated at all. Which ends up leading to tons of different ways of using the library. Through an agency, I've seen tons of redux projects. Many had variations of "best practices". Some projects were miserable to work on because you can't tell your ass from your elbow, while others were easier to reason about.
 
 The maintainers of redux ended up making something called `redux-tool-kit`. Which is literally pitched as, "The official, opinionated, batteries-included toolset for efficient Redux development".
 
-`redux-tool-kit` basically took most of the industry's best practices and made a library on top of it to enforce those best practices. A few small things to mention is including redux-thunk,  mapping functional components to key values in `slices` and removing the need for `redux.connect` to bridge the gap between your React components and redux store. 
+`redux-tool-kit` basically took most of the industry's best practices and made a library on top of it to enforce those best practices. A few small things to mention is including redux-thunk,  mapping functional components to key values in `slices` and removing the need for `redux.connect` to bridge the gap between your React components and redux store.
 
 Because the community struggles with all the different redux implementations, an opinionated library comes out to ensure that everyone is using the library the same way. This ensures that people aren't doing whatever they want when implementing redux in an app, which makes it significantly easier to learn and enjoy. After all, life would be much easier if we all did things the same way, right?
 
@@ -27,4 +27,24 @@ Because the community struggles with all the different redux implementations, an
 
 Being less opinionated means that the library or tool doesn't restrict you from doing things in a limited amount of ways. In many ways, React itself suffers from this problem. If you were to choose 10 random React projects that existed on github, you'd probably seem some really different implementations. Class components or functional, utility functions vs functions being defined at the component level, separate files for styling, different styling libraries, prop drilling or composing components, the list can go on. You sort of have to have an ear to the JavaScript community to know what the consensus is, and that can change at any given moment in this industry.
 
-I really love Theme-UI for the lack of opinion on how components should be styled. Better yet, with the theming system and the sx prop, I'm allowed to extend my own opinions on how things should be styled through the library. With other UI libraries and theming systems, you have to learn their weird APIs for things like Grid layouts and buttons and sometimes when you need to do something kinda different with your styles, those APIs end up holding you back and slowing down your progress.
+I really love Theme-UI for the lack of opinion on how components should be styled. Better yet, with the theming system and the sx prop, I'm allowed to extend my own opinions on how things should be styled through the library. With other UI libraries and theming systems, you have to learn their unfamiliar APIs for things like Grid layouts and buttons and sometimes when you need to do something kinda different with your styles, those APIs end up holding you back and slowing down your progress.
+
+Does this mean that React would be better if it was more opinionated? I personally love React and the eco-system that comes with it. I'm not sure what a very opinionated React would look like, however, there _are_ opinionated libraries you can use, like  Ember and Angular.
+
+## When is an opinionated library a good thing?
+
+(I'm really struggling here to not make jokes about saying, "Well, in my opinion..." btw)
+
+#### When it's solving a problem that everyone has.
+
+Let's take routing for example. Every web developer needs to do this at some point.
+
+React, being the flexible tool that it is, has quite a few options for handling routes. Due to the nature of React, there are many different ways to structure how you use each option, however, the actual usage of the router itself is where the opinion is. Fundamentally, they all work the same way. Wrapping a Provider component around your root component, with Route components that point to your App's UI components. As long as those specifications are met, you will have successfully set up routing in your app.
+
+Another example would be how we handle responsive design. Many UI libraries have built-in CSS classes that determine whether or not content should be laid out horizontally or vertically based on screen width. They provide their own padding, margin and box shadow by default. Of course, you're allowed to overwrite or apply more styling. These types of opinionated approaches allow you to get things done faster and they look better sooner rather than later.
+
+#### When a common problem is difficult to implement
+
+Thinking back on redux, this is _exactly_ why redux-tool-kit exists. Redux was already very flexible and being mostly used in a very flexible UI library probably didn't help. I have to admit, it took me a very long time to feel comfortable with redux probably because of how many different implementations of it I've seen. The problem is less about the high-level idea of how it works, it's more about how everyone structured using it because there were no real guidelines on best practices. 
+
+#### When a problem is very specific
