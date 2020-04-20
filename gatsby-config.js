@@ -12,6 +12,7 @@ module.exports = {
     `gatsby-theme-ui-blog`,
     `gatsby-plugin-theme-ui`,
     `gatsby-plugin-react-helmet`,
+    `@pauliescanlon/gatsby-mdx-embed`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
