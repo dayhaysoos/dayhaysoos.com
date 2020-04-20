@@ -10,4 +10,5 @@ fields:
   label: date
   default: now
 pages:
+- content/posts/my-very-first-open-source-library-for-e-commerce.mdx
 - content/posts/opinionated-libraries-vs-less-opioniated-libraries.mdx
