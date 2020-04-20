@@ -19,6 +19,22 @@ const freeEggheadResources = [
     prepend: <IconPlay />,
     category: "javascript",
   },
+  {
+    id: "react-nick-dejesus-testing-react-hooks-livestream-part-1",
+    href:
+      "https://egghead.io/lessons/react-nick-dejesus-testing-react-hooks-livestream-part-1",
+    title: "Testing React Hooks Live Stream Part 1",
+    prepend: <IconPlay />,
+    category: "javascript",
+  },
+  {
+    id: "react-nick-dejesus-testing-react-hooks-livestream-part-2",
+    title: "Testing React Hooks Live Stream Part 2",
+    href:
+      "https://egghead.io/lessons/react-nick-dejesus-testing-react-hooks-livestream-part-2",
+    prepend: <IconPlay />,
+    category: "javascript",
+  },
 ]
 
 const IndexPage = () => {
