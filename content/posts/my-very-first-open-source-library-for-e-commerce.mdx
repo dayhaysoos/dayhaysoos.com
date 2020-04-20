@@ -7,7 +7,7 @@ If you've been following me for a while, you'd know that I am very involved with
 
 I remember at some point of my coding journey thinking to myself that I would _never_ be an opensource maintainer. I didn't think I'd ever be skilled enough to attempt such a thing. I also didn't think I'd ever make anything anyone would care about. To be honest, maybe no one will care about what I've done anyway. That doesn't matter to me, though because I am **proud** of what I've gone through to get here. It really was just imposter syndrome barking at me at the time. It's a great feeling to reflect on your past doubts after you've overcome an obstacle. So, here I am, writing this blog post before making a real announcement for something I've been so excited to work on.
 
-### use-stripe-cart
+## use-stripe-cart
 
 I made a hooks library specifically for developers who want to build e-commerce experiences.
 
@@ -17,9 +17,9 @@ Shopping cart logic is a pretty big deal for making money on the internet. There
 
 The goal of this library is to give you all of the shopping cart logic you'd need for your e-commerce stores so you don't have to cart about writing the code to handle those things I've listed. It's built specifically for Stripe's Checkout experience. You can either reference product skus/plans from your Stripe dashboard or you can go with a serverless implementation and create a session ID (the preferred way to use it)
 
-### Why the hell would I do any of this?
+## Why the hell would I do any of this?
 
-Writing the code to handle shopping carts sucks. I hate it. It's nothing I want to do ever again. I'm pretty sure no one wants to do these things from scratch either. 
+Writing the code to handle shopping carts sucks. I hate it. It's nothing I want to do ever again. I'm pretty sure no one wants to do these things from scratch either.
 
 But there's more to it than just that. That's a reason just about **anyone** can have.  When people go off and do something anyone else could have done, it's usually a personal or unique experience that drives people to put so much energy into addressing an issue.
 
@@ -35,8 +35,10 @@ While this is really cool, there are some limitations from Stripe's Dashboard th
 
 These things were available in Stripe's Orders API, but that's being deprecated in favor of the Products API which is more secure (as far as compliance and law things that you don't want to deal with) and enables you to use their amazing Checkout experience.
 
-I have been trying get Stripe to add these features for quite a while and it doesn't seem to be a priority right now. That's totally okay, because to be honest, Stripe is a product for _developers._ It's a damn good service that they provide and the things that I'm asking for in regards to the dashboard are more catered towards non-developers. 
+I have been trying get Stripe to add these features for quite a while and it doesn't seem to be a priority right now. That's totally okay, because to be honest, Stripe is a product for _developers._ It's a damn good service that they provide and the things that I'm asking for in regards to the dashboard are more catered towards non-developers.
 
-**Note: You can accomplish anything you need for e-commerce with Stripe, I'm sharing what is limiting my Gatsby themes**
+**Note: You can accomplish anything you need for e-commerce with Stripe, I'm sharing what is limiting my Gatsby themes. In fact, I'm sure it's low priority _because_ it can be done without having a beefed-up dashboard experience anyway.**
 
-### The workaround
+## The workaround
+
+Because Stripe is totally capable of providing a solid e-commerce experience without needing anything to be done on the dashboard, it pretty much makes sense for me to find another way around doing this without my Gatsby theme. One thing I realized is that the main work being done for my theme was actually in all of the shopping cart experience. I'd say that my Gatsby theme was 80% shopping cart logic and 20% Gatsby stuff. That's when the idea came to me that I should separate out the shopping cart logic!
