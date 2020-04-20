@@ -1,9 +1,8 @@
 ---
+
 date: 2020-04-20T00:05:25Z
 title: My very first open source library for e-commerce
-
----
-If you've been following me for a while, you'd know that I am very involved with JamStack (Gatsby), Stripe and trying to get my fiance (@ParissAthena) to pay my invoice.
+---If you've been following me for a while, you'd know that I am very involved with JamStack (Gatsby), Stripe and trying to get my fiance [@ParissAthena](https://twitter.com/ParissAthena) to pay my invoice.
 
 I remember at some point of my coding journey thinking to myself that I would _never_ be an opensource maintainer. I didn't think I'd ever be skilled enough to attempt such a thing. I also didn't think I'd ever make anything anyone would care about. To be honest, maybe no one will care about what I've done anyway. That doesn't matter to me, though because I am **proud** of what I've gone through to get here. It really was just imposter syndrome barking at me at the time. It's a great feeling to reflect on your past doubts after you've overcome an obstacle. So, here I am, writing this blog post before making a real announcement for something I've been so excited to work on.
 
@@ -21,17 +20,39 @@ The goal of this library is to give you all of the shopping cart logic you'd nee
 
 Writing the code to handle shopping carts sucks. I hate it. It's nothing I want to do ever again. I'm pretty sure no one wants to do these things from scratch either.
 
-But there's more to it than just that. That's a reason just about **anyone** can have.  When people go off and do something anyone else could have done, it's usually a personal or unique experience that drives people to put so much energy into addressing an issue.
+But there's more to it than just that. That's a reason just about **anyone** can have. When people go off and do something anyone else could have done, it's usually a personal or unique experience that drives people to put so much energy into addressing an issue.
 
-It started with my Stripe based Gatsby themes. Here's a tweet where I announced it: [https://twitter.com/Dayhaysoos/status/1182736315256844293](https://twitter.com/Dayhaysoos/status/1182736315256844293 "https://twitter.com/Dayhaysoos/status/1182736315256844293")
+It started with my Stripe based Gatsby themes. Here's a tweet where I announced it:
+
+<blockquote class="twitter-tweet">
+  <p lang="en" dir="ltr">
+    I&#39;m excited to announce what I&#39;ve been working on! I&#39;ve been
+    working on a{" "}
+    <a href="https://twitter.com/Gatsby?ref_src=twsrc%5Etfw">@gatsby</a> theme
+    that would allow you to quickly spin-up{" "}
+    <a href="https://twitter.com/stripe?ref_src=twsrc%5Etfw">@stripe</a>{" "}
+    e-commerce stores in no time at all! It&#39;s at the beginning stages, but
+    here&#39;s the starter:{" "}
+    <a href="https://t.co/quYqQIuOrD">https://t.co/quYqQIuOrD</a>
+  </p>
+  &mdash; Nick DeJesus - Theme Provider✨ (@Dayhaysoos){" "}
+  <a href="https://twitter.com/Dayhaysoos/status/1182736315256844293?ref_src=twsrc%5Etfw">
+    October 11, 2019
+  </a>
+</blockquote>
+<script
+  async
+  src="https://platform.twitter.com/widgets.js"
+  charset="utf-8"
+></script>
 
 This is a Gatsby theme that looks at your Stripe products that you've created with the Dashboard and renders them onto a page where buyers will be able to add these items to a shopping cart and checkout from a side panel.
 
 While this is really cool, there are some limitations from Stripe's Dashboard that make me sad in the face 😔.
 
-* You can't handle variations of products (T-shirt sizes, colors etc).
-* You can't add a description for the product. This is super important because you can't pitch your product to the buyer. Also, a standard e-commerce experience is being able to click on the product to see that products individual page. It's not worth giving these products in my theme their own page because there is no content to go with it.
-* You can only upload one image per product. Can't show different angles or models wearing stuff. Makes it hard to show what the variations of a product could look like.
+- You can't handle variations of products (T-shirt sizes, colors etc).
+- You can't add a description for the product. This is super important because you can't pitch your product to the buyer. Also, a standard e-commerce experience is being able to click on the product to see that products individual page. It's not worth giving these products in my theme their own page because there is no content to go with it.
+- You can only upload one image per product. Can't show different angles or models wearing stuff. Makes it hard to show what the variations of a product could look like.
 
 These things were available in Stripe's Orders API, but that's being deprecated in favor of the Products API which is more secure (as far as compliance and law things that you don't want to deal with) and enables you to use their amazing Checkout experience.
 
@@ -59,7 +80,7 @@ That really got the momentum going for me big time. Most of the logic/code was c
 
 [https://twitter.com/taylorbell](https://twitter.com/taylorbell "Taylor")
 
-[https://twitter.com/_jonesian](https://twitter.com/_jonesian "Ian")
+[https://twitter.com/\_jonesian](https://twitter.com/_jonesian "Ian")
 
 [https://twitter.com/dolearning](https://twitter.com/dolearning "Kevin")
 
@@ -71,7 +92,7 @@ Special shout out to
 
 ## Serverless support
 
-Because this cart has my Gatsby themes in mind, need a way that allows me to create these products and take me to Stripe's checkout experience without relying on the dashboard. To do this, I need to create session IDs. I'll save the details for the use-stripe-cart docs, but I got tons of help from [https://twitter.com/jlengstorf](https://twitter.com/jlengstorf  "Jason at Netlify") for figuring out the best way to support this kind of integration serverless.
+Because this cart has my Gatsby themes in mind, need a way that allows me to create these products and take me to Stripe's checkout experience without relying on the dashboard. To do this, I need to create session IDs. I'll save the details for the use-stripe-cart docs, but I got tons of help from [https://twitter.com/jlengstorf](https://twitter.com/jlengstorf "Jason at Netlify") for figuring out the best way to support this kind of integration serverless.
 
 ## What's next? 🤔
 
@@ -79,6 +100,6 @@ What's funny is that I had no idea I'd be doing 99% of what I've been doing sinc
 
 Eventually, I'm going to be looking for clients who need e-commerce solutions with Stripe to battle test my work.
 
-Who knows where any of that will take me? 
+Who knows where any of that will take me?
 
 Thank you for reading, looking forward to sharing this with you all!
