@@ -79,8 +79,8 @@ const SubscribeForm = props => {
                       mb: 3,
                     }}
                   >
-                    Get e-mails from me about coding, getting projects done and
-                    whatever else comes to mind
+                    I'm planning on launching my first product. Get e-mails from
+                    me about my journey
                   </Heading>
                   <Heading
                     as="h4"
