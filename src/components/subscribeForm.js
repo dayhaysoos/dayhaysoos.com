@@ -101,11 +101,11 @@ const SubscribeForm = props => {
                       }}
                     >
                       <Field
-                        aria-label="first name"
+                        aria-label="preferred name"
                         aria-required="false"
                         name="first_name"
                         id="first_name"
-                        placeholder="First name"
+                        placeholder="Preferred Name"
                         type="text"
                         autoComplete="given-name"
                         sx={{
