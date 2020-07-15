@@ -10,6 +10,7 @@ fields:
   label: date
   default: now
 pages:
+- content/posts/don-t-seek-mentors-seek-friends.mdx
 - content/posts/my-very-first-open-source-library-for-e-commerce.mdx
 - content/posts/opinionated-libraries-vs-less-opioniated-libraries.mdx
 - content/posts/personal-projects-and-why-you-should-finish-them.mdx
