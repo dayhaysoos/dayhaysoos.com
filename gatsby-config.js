@@ -4,12 +4,18 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Dayhaysoos.com`,
+    description: `Welcome to the personal site of Nick DeJesus`,
+    author: `@dayhaysoos`,
   },
   plugins: [
-    `gatsby-theme-ui-blog`,
+    {
+      resolve: `gatsby-theme-blog`,
+      options: {
+        // basePath defaults to `/`
+        basePath: `/blog`,
+      },
+    },
     `gatsby-plugin-theme-ui`,
     `gatsby-plugin-react-helmet`,
     `@pauliescanlon/gatsby-mdx-embed`,
