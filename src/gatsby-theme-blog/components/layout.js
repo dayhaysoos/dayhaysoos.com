@@ -2,9 +2,9 @@
 import { jsx, Container, Heading } from "theme-ui"
 import Head from "./head"
 
-import Header from "../components/header"
-import PostShareBlock from "../components/postShareBlock"
-import Footer from "../components/footer"
+import Header from "../../components/header"
+import PostShareBlock from "../../components/postShareBlock"
+import Footer from "../../components/footer"
 
 export default props => {
   return (

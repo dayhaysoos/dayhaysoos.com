@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx, Flex, Container } from "theme-ui"
-import Link from "./link"
+import { Link } from "gatsby"
 
-import slashes from "../images/slashes.svg"
+import slashes from "../../images/slashes.svg"
 
 const Footer = () => (
   <Container
