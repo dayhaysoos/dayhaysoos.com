@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container, Heading } from "theme-ui"
+import { jsx, Container, Heading, Flex } from "theme-ui"
 import { useStaticQuery, graphql } from "gatsby"
 import Link from "../components/link"
 
@@ -120,19 +120,34 @@ const IndexPage = () => {
               T7 Chicken Plus
             </a>
           </Heading>
-          <Link
-            to="/about"
-            sx={{
-              variant: "links.regular",
-              mt: [4, 5],
-              textTransform: "capitalize",
-              display: "inline-block",
-              fontWeight: "semibold",
-              color: "text",
-            }}
-          >
-            read full bio
-          </Link>
+          <Flex sx={{ alignItems: "center", justifyContent: "space-evenly" }}>
+            <Link
+              to="/about"
+              sx={{
+                variant: "links.regular",
+                mt: [4, 5],
+                textTransform: "capitalize",
+                display: "inline-block",
+                fontWeight: "semibold",
+                color: "text",
+              }}
+            >
+              read full bio
+            </Link>
+            <Link
+              to="/blog"
+              sx={{
+                variant: "links.regular",
+                mt: [4, 5],
+                textTransform: "capitalize",
+                display: "inline-block",
+                fontWeight: "semibold",
+                color: "text",
+              }}
+            >
+              See all Blog posts
+            </Link>
+          </Flex>
         </Container>
       </div>
       <Container>
