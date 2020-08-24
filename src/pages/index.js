@@ -40,7 +40,7 @@ const freeEggheadResources = [
 const IndexPage = () => {
   const allPosts = useStaticQuery(graphql`
     query AllPostsQuery {
-      allBlogPost(limit: 3, sort: { fields: date, order: DESC }) {
+      allBlogPost(limit: 5, sort: { fields: date, order: DESC }) {
         nodes {
           title
           slug

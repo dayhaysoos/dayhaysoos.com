@@ -12,7 +12,7 @@ import SubscribeForm from "./subscribeForm"
 
 import "../fonts/fonts.css"
 
-export default ({ subscribe = true, children }) => {
+const Layout = ({ subscribe = true, children }) => {
   // const data = useStaticQuery(graphql`
   //   query SiteTitleQuery {
   //     site {
@@ -62,3 +62,5 @@ export default ({ subscribe = true, children }) => {
     </Styled.root>
   )
 }
+
+export default Layout
