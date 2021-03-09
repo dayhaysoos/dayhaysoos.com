@@ -1,0 +1,35 @@
+---
+date: 2021-03-08T23:18:46Z
+title: Making a hooks library framework agnostic with Redux
+
+---
+Someone in the use-shopping-cart discord asked if it was possible to use it without React. I immediately responded with, "No". I immediately felt sadness after. I felt sad that only React developers could make use of this library. While React is the most used framework to date, it still feels unfair.
+
+It reminded me of when I launched my first Android app, called Tekken Chicken (now known as T7 Chicken). I originally wanted to be an Android developer and this was my first attempt at launching something. What better way to learn a new skill than to make something for a community you're apart of? I had over 10,000 happy users, however, the Tekken players who had iPhones were pissed! After every update I gave on my Facebook page, there were always iOS users asking me, "iOS when?!" 
+
+I hated that my app felt exclusive to one platform, and this is ultimately why I switched to being a web developer. Launching something on a website is technically launching something on an iPhone, Android, Mac or PC, probably your car or toothbrush, who knows what else can access a website these days?
+
+When I was asked about whether or not use-shopping-cart could be used without React, I felt those same feelings again. To a much lesser extent, of course. But I hated that you had to be locked in to React to take advantage of it.
+
+It was a really interesting journey, this blog post is going to go over the steps I had to take at a high level. 
+
+## Let's talk about redux.
+
+I _love_ redux. It's awkward being a redux lover out here. Every time someone says "redux" in a room full of JavaScript developers, many people wince, cringe, brace themselves. Proceeded with war stories about that one time they were on a project with redux. I've seen the worst and best of redux. I think if there is one problem with redux is that it is not opinionated at all. Anything very useful but unopinionated has a way of spawning an ecosytem of opinionated ways to use unopinionated tools. Despite there being "best practices", it didn't stop from so many redux projects from looking nothing like one another, and that can be very frustrating.
+
+Redux is a framework agnostic tool. It made sense to me that the right thing to do was to remake use-shopping-cart but with redux. Fortunately, there exists a nice tool called redux-tool-kit, which provides all of the best practice features out of the box. Normally, with a redux project you'd need to install a handful of libraries to bring it all together. redux-tool-kit provides all those things and more!
+
+## A little context. . . 
+
+Luckily, I didn't have to start from scratch, most of the code for use-shopping-cart is done! The meat and potatoes of use-shopping-cart all comes down to these "Entry" functions. What they do is manage adding items to the cart and formatting things in a way that makes them easy to represent in a UI. An entry is essentially a product in the cart, and there are several functions that interact with the entry in a CRUD-like way:
+
+* createEntry
+* updateEntry
+* removeEntry
+* updateQuantity
+
+They also manage meta-state values like total cart count and total price of the cart.
+
+## Using Redux Tool Kit
+
+If you've ever felt overwhelmed from the redux ecosystem, you don't have to worry about any of that any more. All of it is packed into what RTK calls a `slice`
