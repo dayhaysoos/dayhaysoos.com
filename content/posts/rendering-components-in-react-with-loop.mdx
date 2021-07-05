@@ -1,0 +1,52 @@
+---
+date: 2020-09-05T01:57:01Z
+title: Rendering  components in React with a loop
+
+---
+A frequent thing you'll need to do with React is looping through data and rendering components based on that data.
+
+In this post, I'm going to show two simple ways to handle this, one with an array of strings.
+
+This post assumes you're beginning with React and have somewhat of an understanding of how JSX works.
+
+Let's say the goal was to show four strings wrapped in the paragraph element.
+
+The source for these numbers would be coming from an array: 
+
+
+```js
+const arrayOfStrings = ["Zero", "One", "Two", "Three"];
+```
+
+```jsx
+function SomeComponent() {
+  return (
+    <p>{arrayOfStrings[0]}</p>
+    <p>{arrayOfStrings[1]}</p>
+    <p>{arrayOfStrings[2]}</p>
+    <p>{arrayOfStrings[3]}</p>
+  )
+}
+```
+
+This is no problem at all if the data in the array is so small. 
+
+But what if there were hundreds of elements in that array? Doing this would take you all day, it would also be hard to make edits if a bunch of the values changed for some reason. This is where you'd want to use a loop.
+
+This is what I would do:
+
+```jsx
+function SomeComponent() {
+  return (
+    {arrayOfStrings.map((string) => <p>{string}</p>))}
+  )
+}
+```
+
+Notice, in that return statement, I started with an open curly bracket `{}`
+
+I call this opening up the JavaScript portal. This allows you to use JavaScript within JSX.
+
+I used `map` on `arrayOfStrings`, the paramater `string` represents the element in the array at the current iteration of the loop, which is a string, and the ES6 arrow is shorthand for returning that string, but wrapped in the `<p />` tag.
+
+There are different ways to loop through arrays and apply elements in them, I hope this was a simple enough example to help you on your way towards more complex uses!
