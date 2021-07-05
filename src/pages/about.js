@@ -9,20 +9,9 @@ const IndexPage = () => (
     <Container>
       <Heading sx={{ marginBottom: 20 }}>About Me</Heading>
       <Box>
-        Nick is a Software Engineer at{" "}
-        <a href="https://echobind.com">Echobind</a> with experience working
-        across multiple industries such as cybersecurity, finance, e-commerce,
-        and education. In his last role, he joined Resilient Coders to help
-        close the opportunity gap for aspiring Black and Latinx engineers in
-        tech. He also is an instructor at{" "}
-        <a href="https://egghead.io">egghead.io</a>. On his free time, he
-        manages a mobile app called T7 Chicken Plus, a tool that helps over
-        30,000 competitive Tekken players stay in touch with information about
-        the characters and is a maintainer of a Stripe powered shopping cart
-        library, <a href="https://useshoppingcart.com">use-shopping-cart</a>.
-        His favorite technologies are React Native and anything Jamstack
-        related, which, he uses to build e-commerce themes that leverage
-        Stripe's Checkout experience.
+        Nick is a Software Engineer at Prismic on the Developer Experience team, focused on NextJS. As the open source maintainer of use-shopping-cart, a Stripe powered shopping cart library, he's always thinking of ways to solve problems in the e-commerce space. 
+        
+        His favorite technologies to work with are anything on the Jamstack, as well as React Native. He has a passion for teaching and developer tooling. Outside of work, he is a competitive gamer, participating in Tekken tournaments around the world.
       </Box>
     </Container>
   </Layout>
