@@ -1,0 +1,60 @@
+---
+date: 2021-07-12T14:26:31Z
+title: use-shopping-cart 3.0.0 is finally released! What changed and what's to come
+
+---
+If you don't know what use-shopping-cart is, it's a Stripe-based library that manages your shopping cart state and logic. I made it because:
+
+1. I realized how horrible it is to roll your own shopping cart and never want myself or anyone else to experience that again.
+
+2. Making money online should be easier and more equitable. What better place to see this through than Open Source?
+
+About 5 months ago (February 2021), someone asked me if they could use this library on an HTML only site. The answer was no, because use-shopping-cart was only a hooks library. This didn't feel good because of point number 2 I made earlier, "Easier and more equitable". While I am happy to make this contribution to React developers, I couldn't help but think, "But what about everyone else?"
+
+The very next day, I opened up a [draft pull request](https://github.com/dayhaysoos/use-shopping-cart/pull/177)  on GitHub.
+
+The plan was to convert a React hooks library to redux. I honestly had no idea what to do next but I knew it was possible because the redux docs provide an HTML/JS way of using it. That kept me goin'!
+
+215 commits later, and with the help of some amazing contributors, I finally was able to release use-shopping-cart 3.0.0!
+
+## What changed
+
+Honestly, the major change is the fact that use-shopping-cart has now become framework agnostic. This means that this library can be useful to people who use other JS frameworks, like Angular, Vue and Svelte. 
+
+What's funny is that despite the massive amount of work, if you've already been using this with React, it's possible you won't feel any of the changes. For the most part there are small API things, for example:
+
+`addItem()` used to accept 4 params, but now it accepts 2 params, with the second being an `options` object.
+
+I'm going to make a much more technical blog post about what it was like making this conversion to redux sometime soon, so be on the look out if you're curious about that!
+
+You can check out the new docs site, we're using docusaurus now and it's pretty amazing. Major shout out to [https://twitter.com/erchwy](Eric Howey) for helping me by kicking this off!
+
+Here's the link to the docs:
+
+https://useshoppingcart.com
+
+## What's to come
+
+This is what I'm *really* excited for! Now that redux is being used under the hood, this is the chance to make this library work for other frameworks. High on the priority list making this work with Angular, Vue and Svelte. 
+
+If anyone is looking for any open source opportunities, especially if you use those frameworks and would like to take advantage of use-shopping-cart, feel free to hit me up and we can talk it through!
+
+Some new, smaller features on the way: 
+
+- New cart state for cart interaction. It'll allow for little notifications like, "item added to cart" and disappear after a few seconds.
+
+- A "custom" `cartMode` if you wanted to use the cart state and logic but with a different payment platform
+
+- Helper functions that'll help with rendering UIs, but I can't speak much about this one yet 🤐
+
+- Methods for dynamically adding metadata for products and prices
+
+I'm probably going to open up issues on GitHub for the things we have planned next if anyone is interested in taking a look. 
+
+I want to give a shout out to [Andria](https://twitter.com/andria_dev) for doing such thorough code reviews and making sure this project stays in a great shape since the beginning, I can't imagine getting this far without your insight.
+
+Also shout out to [Jason](https://twitter.com/mckeejm) for taking a look at our tests and fixing the bugs we had there, as well as hopping on calls to talk through Vue integrations and future plans. I'm so glad you happen to enjoy the really the things in programming that I do not enjoy :D
+
+If you've made it this far, thank you for reading! As a side note, I've been learning AWS and I'm very interested in seeing what it's like to use this library with a real backend so I can better support real world scenarios. 
+
+If you have any questions or want to make any contributions or anything, please reach out to me at either nick@dayhaysoos.com or DM me on Twitter https://twitter.com/dayhaysoos
