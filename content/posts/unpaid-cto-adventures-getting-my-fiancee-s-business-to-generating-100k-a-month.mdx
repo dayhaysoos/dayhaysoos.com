@@ -1,0 +1,147 @@
+---
+date: 2021-10-05T16:02:02Z
+title: 'Unpaid CTO adventures: Getting my fiancee`s business to generating 100k a
+  month'
+
+---
+You ever wonder about what people do at the C-level of a company? I did too, and no matter how many times people described it to me or I looked it up, it still never really clicked. That is until my fianceè, [Pariss](https://twitter.com/parissAthena), decided to launch her own business, Black Tech Pipeline (BTP). I've been witnessing her growth as an entrepreneur, Founder, CEO, and overall business woman. I'm extremely proud of how she's been handling it all on this first-time journey. 
+
+One side-effect of Pariss launching her business was me somehow becoming her CTO. It's different from what you might expect for most CTO's. I'm in an unpaid position and held in this role indefinitely. Since this is the case, I've been alongside Pariss in this journey of learning and growing, but on the technical side. Black Tech Pipeline has also become my baby, and I see the great potential it has to become one of the best digital platforms on the internet. With that being said, I have a better understanding of what C-level exec people worry and care about. 
+
+To oversimplify everything: 
+
+CEO's have to make sure that the business can make money and scale.
+
+CTO's have to help the CEO with their goal, but focus on the tech side of things to make that goal come true.
+
+These roles can look wildly different for everyone. It really depends on the business itself and what the people running it envision it to become. This is why my take may sound so vague.
+
+Right now, BTP is doing *very* well, but I have a feeling that I can help Pariss grow and scale it into a business that can be generating $100,000 a month. There is a lot of context that needs to be painted for me to get to that part, so let me break down her business and give insight on the things I've had to care about as Unpaid CTO.
+
+In this blog post, I'm going to break down my fianceé’s business model and talk about how I, Unpaid CTO, plan to alleviate a lot of the work that Pariss has on her shoulders, while also helping Black Tech Pipeline make more money.
+
+## The business:
+
+*Black Tech Pipeline*✨
+
+[blacktechpipeline.com](https://blacktechpipeline.com)
+
+BTP is a job board and recruiting agency focused on connecting Black technologists to open job opportunities in the tech industry.  
+
+First order of business, as CTO, was for me to build the website!
+
+https://blacktechpipeline.com
+
+BTP has two business models: A job board and a recruiting service.
+
+The job board:
+
+Every company on the BTP job board receives a landing page that contains content around that companies values, diversity, equity, and inclusion (DE&I) initiatives, safety policies, what type of leadership they have, an overview of their interview process, benefits, and images of their team.
+
+Companies interested in being on the BTP job board have to take a discovery call with Pariss. She wants to learn more about the interested company, share more information on BTP, and talk about whether partnering may be a good fit or not. After every call, they receive an automated rate sheet that details BTP's services and pricing structure. If the company is interested in partnering, Pariss sends the company a legal agreement, and once that's signed, the company receives a questionnaire to fill out that Pariss uses to build them their landing page for the job board. Every job board is completely unique, thanks to MDX (I'll talk a bit about that later).
+
+Recruitment:
+
+BTP has a talent database with over 1,500 Black tech candidates from all around the world! They're mainly in the US, but also in Canada, the EU, UK, and Africa. They range from junior, to mid-level, to senior, and up. They're diverse in gender, education, tech stack, field in tech, and more.
+
+When companies are interested in recruitment, Pariss sends them a form that asks questions about the roles they'd like her and her team to source for, and anything they should keep in mind while sourcing. Then, Pariss and her sourcing assistants search the talent database for candidates that fit the requirements of that companies open roles. They connect interested candidates over to those companies, and if the company hires a BTP candidate, BTP gets a 20% cut of the hires first year base salary- standard pricing for recruiting. 
+
+BTP's recruitment service has a unique and valuable model. After a company hires a candidate through recruitment, there is a 90 day check-in model where Pariss meets with the candidate and the organization separately, virtually, and bi-weekly to make sure that everything the hire is having a good experience and being set up for success. If there are any issues with the employer, she works with them on reviewing policies or procedures to improve the hires experience and to help the company retain them. So not only is her service a recruiting platform, her clients are also paying for transparent feedback on themselves as an employer that will improve the current and futures hires experience.
+
+She does have other miscellaneous revenue streams from the website but we're not going to get into those.
+
+
+## How business has been doing
+
+Phenomenal! Since launching BTP in September 2020, Pariss is averaging around 20k a month and business isn't slowing down at all. She's partnered with some of the biggest companies in the world, as well as start ups and everything in between. She has many returning clients and gets new ones from word of mouth, news articles and social media. She hasn't had to do any outreach at all.
+
+Honestly, if she wanted to continue this way forever, I don't think it's a bad idea as a life style business. If you think in terms of scalability and growth, there are definitely things that can be worked on, but I'll get to that in a moment.
+
+## The current stack:
+
+#### Gatsby hosted on Netlify
+
+Gatsby was my go-to choice for me on this because I absolutely love how you can process and format data and bake it into a GraphQL layer. We knew we'd be needing a job board for the site and would have to have a page for every client. To keep things simple and affordable, I wanted to use Markdown as the source of data and figured I could use Gatsby's life cycle methods to build out the pages.
+
+#### Forestry CMS
+
+I wanted a CMS that connected directly to GitHub that also allowed you to create Markdown files. They have a very generous free-tier and it allowed her the ability to launch her business until she could afford to pay.
+
+#### MDX
+
+I love MDX so much! MDX allows you to use React in Markdown files. With MDX, she's given enough flexibility on the landing pages for companies to speak from their own voices and brand the way they want to. If you look at each page on the job board, they are completely unique. Most job boards have a specified format that displays the same amount of data per employer. Some clients have videos, some have more pictures than others and they're all in whatever order they want.
+
+- Magic links 🪄
+
+Conceptually, magic links are a form of passwordless login.
+
+We use magic links that allow clients to update the job board roles on their own. Instead of giving them a log in, they use the magic link on an interface that actually updates the Black Tech Pipeline GitHub repo, which then triggers a Netlify build. 
+
+We got help setting this up by an agency called [Upstatement](https://upstatement.com/). Would highly recommend hiring them for marketing, design or dev work, they have some geniuses over there!
+
+- Airtable
+We hold all the candidate data in Airtable. It's been a tremendous help with getting kicked off, however, we are starting to find it limiting and might have to look elsewhere (my biggest problem to solve, yet).
+
+## The Problems
+
+Earlier, I said that business is going great and it'd be totally fine if Pariss wanted to continue the way she is now. From a scalibility perspective, there's quite a few problems we have:
+
+#### Black Tech Pipeline can't run without Pariss
+
+Pariss literally *is* the business. There is no way that Black Tech Pipeline can function without her existence. This might sound nice because it places a really heavy importance on an individual, which allows for extreme job security, but there are quite a few issues with this. When a person is the business itself, that usually means there aren't enough systems in place that help the business move along  to reach its full potential. It also means that she is doing a lot of the work on her own.
+
+I believe that a good solution for this is to set her up so that BTP is a business that anyone could run. We could set up very detailed documentation to talk through processes we have in place, and/or leverage my Unpaid CTO skills to build something that handles some of these processes for her (spoilers).
+
+#### Airtable isn't sustainable long term
+
+If you're a candidate that's part of the database, you submit your data once and that's that. If something changes, like location or number, you have to resubmit instead of updating your data. We'd like to actually start putting out ads to get more candidates in the database, but we are hesitant to do that while everything is relying on Airtable at the moment.
+
+It would be ideal to allow candidates to submit their application and keep it up to date over time. This would make us feel better about the integrity of our data.
+
+#### Getting a hold of candidates is hard
+
+Recruiting seems easy because you're simply asking people if they'd like to interview for a high paying job. However, it's not that simple at all. The solution to this, in my perspective, wouldn't be to build something to contact people easier and faster. If people want to be available, they will be available. Along with waiting for replies, sourcing also requires a lot of time and energy to search and reach out.
+
+I think the answer here would be to increase the amount of candidates in our database. Right now, we have over 1,500 candidates and it's hard to get them to reply to cold emails in general. If we had a database with over 10,000 candidates, perhaps our chances of getting a response would be easier. If there was a way to increase the chance of individual responses alone, I'd go that route but I can't think of a reasonable way to go about solving that.
+
+#### We can't display candidate data
+
+Many clients have asked if there was a way that they could view the candidates in the database themselves but we can't allow it. We always want to vet employers and understand their DE&I and safety practices before introducing them to our candidates. We also want to keep track of who's reaching out to who, and where everyone is in their interview process. 
+
+However, finding a way to allow employers to source candidates themselves would give us back a lot of time to focus on other tasks and allows the recruitment model to scale itself. It's an interesting obstacle to overcome. 
+
+So to quickly recap on the problems:
+
+1. We need more systems in place to handle Pariss' tasks. We want BTP to be in a position where other people can run it on their own.
+
+2. Airtable was great for starting but not ideal long term. Mostly want to allow candidates to update their data as time goes on.
+
+3. It's too hard to recruit as more and more companies request that service. It's very time consuming and it's hard to get candidates to respond.
+
+4. Can't give clients direct access to the database.
+
+Ultimately, the recruiting part of her business is a significant money making part. We'd like to get better at landing recruits by increasing the number of candidates in the database, but  Airtable is not going to scale well for that. It's sort of a chicken and egg problem.
+
+## The Solution
+
+I'm going to build a platform for Black Tech Pipeline, a web app on Next JS and AWS Amplify. Both Candidates and Employers will both be able to create accounts and will get assigned specific roles.
+
+Candidates will be able to upload similar data to what they do now in the Airtable database, but also get the ability to update info as things change and delete their info from the backend.
+
+Pariss and her assistants will be able to search the database as they already do with Airtable, but the integrity of the data will be better since I can set up forms with validation and formatting a bit better than Airtable can.
+
+There's also something I want to try out and see if I can take things further.
+
+We want to give the employers the ability to search the an anonymous version of the talent database. Basically, there will be only enough information to know if they would be interested in talking to the candidate, not enough to identify. We also will give the candidates a space in the form for an "anonymous pitch", where we ask them to write a paragraph about their experiences and what they're looking for in a way that doesn't give away who they are. 
+
+I want to provide a system where an employer will "like" an anonymous candidates profile, Black Tech Pipeline employees will get notified of that interest, and they can go and reach out to the candidates on the employer's behalf if they want. It can also be looked at as a way of "bookmarking" a candidate for future reference. This, of course, is optional for companies that have active recruiters.
+
+To be honest, I'm probably going to need to talk to some lawyers about this "anonymous search" approach, but I'm excited to do some exploring.
+
+If things go really well, Pariss will be able to land multiple 4-5 recruits a month, which would bring her around 100k a month (if most salaries are near 100k and she takes 20% cut of first year salary). From there, she'll get so tied up in consultations with her hires and employer partners that she'll have to use those funds to hire more people to help her run the business, taking things to the next level.
+
+## Wrapping up
+
+If you've made it this far, I want to say thank you so much for reading. I really enjoy my role as Unpaid CTO and figured I'd share parts of what it's like having such an important role. I've already started building and want to say I'm maybe 60% through the things I've detailed above, I'll be saving much more technical blog posts for later. 
+
+If anyone has any questions or suggestions, feel free to hit me up on Twitter!
