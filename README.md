@@ -1,4 +1,0 @@
-## Develop:
-
-- `yarn`
-- `gatsby develop`

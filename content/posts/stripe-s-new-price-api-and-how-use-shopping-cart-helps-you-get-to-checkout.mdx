@@ -22,7 +22,7 @@ What makes the first two scenarios easy is that Stripe holds most of the informa
 
 Let's take a look at what creating a sessionID should look like:
 
-```js
+\`\`\`js
 const stripe = require('stripe')('sk_test_YOUR_SECRET_API_KEY');
 
 const session = await stripe.checkout.sessions.create({
@@ -34,7 +34,7 @@ const session = await stripe.checkout.sessions.create({
   ],
   mode: 'payment',
 });
-```
+\`\`\`
 
 This is straight from the Stripe docs themselves. You see `line_items`? This key is where you pass the price ID of the product you want to sell. The only other key you need next to it the quantity. Stripe would know what to do from there as far as images, costs etc.
 
@@ -48,7 +48,7 @@ With the previous version of use-shopping-cart, the only way to get the proper f
 
 For this upcoming release, I've made a function called `formatLineItems`. All it does is help you format your data correctly, it's very small and cute:
 
-```js
+\`\`\`js
 const formatLineItems = (cartDetails) => {
   const lineItems = []
 
@@ -59,7 +59,7 @@ const formatLineItems = (cartDetails) => {
 
   return lineItems
 }
-```
+\`\`\`
 
 Note that it looks for either `price_id` or `sku_id`
 
@@ -73,14 +73,14 @@ One product can have many prices, but prices can only have one product. You have
 
 Let's take a look at the deprecated way of creating session ids. What we're really talking about, though, is `line_items`:
 
-```js
+\`\`\`js
 {
   name: Sun Glasses,
   amount: 500,
   currency: 'USD',
   quantity: 2
 }
-```
+\`\`\`
 
 ### SPECULATION
 
@@ -94,7 +94,7 @@ What conditions had to be met that determined what was required? This is what I 
 
 Here is the final format you need to create a session id with the Price API:
 
-```js
+\`\`\`js
 {
   price_data: {
     currency: "usd",
@@ -105,7 +105,7 @@ Here is the final format you need to create a session id with the Price API:
   },
   quantity: 2
 }
-```
+\`\`\`
 
 The thing that is "conditionally required" is whether or not you're using the Price API. If you're not using the Price API, you don't need to adhere to this format. You can see that it's the same data as before, however, they made a few adjustments:
 
@@ -127,7 +127,7 @@ I was debating on whether or not we should have people create products the same 
 
 You can continue to create your product data like this:
 
-```js
+\`\`\`js
 [
   {
     "name": "Bananas",
@@ -144,7 +144,7 @@ You can continue to create your product data like this:
     "currency": "USD"
   }
 ]
-```
+\`\`\`
 
 Some things to note:
 

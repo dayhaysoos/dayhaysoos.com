@@ -1,5 +1,9 @@
 {
-    "cSpell.enableFiletypes": [
-        "mdx"
-    ]
+  "css.lint.unknownAtRules": "ignore",
+  "scss.lint.unknownAtRules": "ignore",
+  "less.lint.unknownAtRules": "ignore",
+  "css.validate": false,
+  "files.associations": {
+    "*.css": "postcss"
+  }
 }
