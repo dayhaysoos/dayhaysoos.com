@@ -1,0 +1,249 @@
+---
+date: 2025-09-03T18:09:28Z
+title: AI Engineering - Notes on Evals
+---
+
+# Notes on Eval
+
+
+## What are Evals?
+
+Evals are tests for AI Applications. This is how you check that you're getting back responses you expect.
+
+Instead of passing or failing metrics, evals score from 0-100 (100 being perfect).
+
+
+## Core elements of an Eval:
+
+**Data**
+
+This is simply the data to test, here you might pass something like "input" and "expected".
+
+**Task**
+
+The tasks you want an LLM to perform.
+
+**Scorers**
+
+These are the methods to score the eval. For example, there is **Levenshtein** scorers that measures the simillarity between two strings.
+Here's an example of what a Levenshtein scorer looks like:
+
+```typescript
+
+import { evalite } from "evalite";
+import { Levenshtein } from "autoevals";
+
+evalite("My Eval", {
+  // A set of data to test
+  data: async () => {
+    return [{ input: "Hello", expected: "Hello World!" }];
+  },
+  // The task to perform, usually to call a LLM.
+  task: async (input) => {
+    return input + " World!";
+  },
+  // Some methods to score the eval
+  scorers: [
+    // For instance, Levenshtein distance measures
+    // the similarity between two strings
+    Levenshtein,
+  ],
+});
+
+// example from evalite
+```
+
+Another method is **Factuality** which checks if the expected answer is at least in the output. Here's an example of what a 
+Factuality eval looks like:
+
+```typescript
+import { Factuality } from "autoevals";
+ 
+(async () => {
+  const input = "Which country has the highest population?";
+  const output = "People's Republic of China";
+  const expected = "China";
+ 
+  const result = await Factuality({ output, expected, input });
+  console.log(`Factuality score: ${result.score}`);
+  console.log(`Factuality metadata: ${result.metadata?.rationale}`);
+})();
+
+// example from braintrust
+```
+
+## Getting started with Evals
+
+### 1. Define a clear criteria
+
+Before writing out the scorers, you need to clearly identify the criteria you will use to evaluate the generated out put. You can start with defining the input (what you send to the model) and the output (what you expect the model to give back).
+
+
+From there, specify traits that you would expect from a good quality resposne.
+
+Traits could be things like:
+
+- How accurate the information is
+- Conciseness
+- Readability
+- Spelling and grammar
+- Bias and Safety
+- Adherence to specific formatting. For example, if you expect a specific JSON structure, you want to make sure it always gives that back no matter what.
+
+If you have multiple steps in your agent workflow, you may use different criteria and traits for each one if it's complex. For example, a factual check for one prompt or Levenshtein for another.
+
+
+### 2. Apply common quality checks
+
+This is pretty straight forward. After you define your criteria, you're more or less checking if those things are being upheld.
+
+### 3. Automate with code-based checks
+
+Code-based checks are deterministic quality checks through code-based scoring functions. This can be as simple as making sure a JSON structure is coming back the way it should be. Here's an example:
+
+```typescript
+
+// Returns 1 if output is valid JSON, else 0
+function handler({
+  output,
+  expected,
+}: {
+  output: string;
+  expected: string | null;
+}): number {
+  if (expected == null) return 0;
+  try {
+    JSON.parse(output);
+    return 1;
+  } catch {
+    return 0;
+  }
+}
+
+```
+
+Another example for checking text length, making sure it's less than 100 characters:
+
+```typescript
+// Enter handler function that returns a score between 0 and 1
+function handler({
+  output,
+  expected,
+}: {
+  output: string;
+  expected: string | null;
+}): number {
+  if (expected === null) return 0;
+  return output.length <= 100 ? 1 : 0;
+}
+```
+
+
+### Develop and align LLM-based scorers:
+
+Not all things can be captured through code, there are things that can be subjective and nuanced like creativity or tone.
+This is where LLM-based scorers come into play.
+
+Some guidelines on building these:
+
+- Make instructions as explicit as possible, provide it with examples of good vs bad outputs and a clear scoring rubric
+- Use chain of thought to understand why the model is assigning a specific score. Chain of thought is a prompting technique that generates a sequence of steps instead of directly providing a final answer.
+- Use more granular scoring when necessary (I'm ngl idk what this means, maybe breaking it down into even smaller parts?)
+- Choose the model that is best suited for the evaluation, which may be different from the model used int he task.
+
+Here's an example from the braintrust site:
+
+
+```typescript
+const promptTemplate: string = `
+You are an expert technical writer who helps assess how effectively an open source product team generates a changelog based on git commits since the last release. Analyze commit messages and determine if the changelog is comprehensive, accurate, and informative.
+ 
+Assess the comprehensiveness of the changelog and select one of the following options. List out which commits are missing from the changelog if it is not comprehensive.
+a) The changelog is comprehensive and includes all relevant commits
+b) The changelog is mostly comprehensive but is missing a few commits
+c) The changelog includes changes that are not in commit messages
+d) The changelog is incomplete and not informative
+ 
+Output format: Return your evaluation as a JSON object with the following four keys:
+1. Score: A score between 0 and 1 based on how well the input meets the criteria defined in the rubric above.
+2. Missing commits: A list of all missing information.
+3. Extra entries: A list of any extra information that isn't part of the commit
+4. Rationale: A brief 1-2 sentence explanation for your scoring decision.
+ 
+---
+EXAMPLE 1
+Input commits:
+- abc123: fix typo in README
+- def456: add JSON parser
+ 
+Changelog:
+- Fixed typo in README
+- Added JSON parser
+ 
+Evaluation:
+{
+  "Score": 1.00,
+  "Missing commits": [],
+  "Extra entries": [],
+  "Rationale": "The changelog covers both commits accurately and includes no unrelated entries."
+}
+ 
+---
+EXAMPLE 2
+Input commits:
+- abc123: fix typo in README
+- def456: add JSON parser
+- ghi789: update CI config
+ 
+Changelog:
+- Fixed typo in README
+- Added JSON parser
+ 
+Evaluation:
+{
+  "Score": 0.75,
+  "Missing commits": [
+    "ghi789: update CI config"
+  ],
+  "Extra entries": [],
+  "Rationale": "The changelog captures two of three commits but omits the CI config update, making it mostly comprehensive."
+}
+ 
+---
+Now evaluate:
+Input:
+{{input}}
+ 
+Changelog:
+{{output}}
+`;
+```
+
+**Random thought**
+When I look at the prompt above, it makes me think about how people do white board coding challenges. You're supposed to sorta state what the problem is,
+list in detail how you're gonna solve it, give an example of what the end result would look like, show an example or 2, and THEN solve the problem.
+
+Idk I might expand on this later as I learn more.
+
+
+Anyway, each choice within the rubric will get a score of 0 or 1. **Binaryis recommended as it's easier to define and creates less confusion among human reviewers during alignment). 
+
+Make sure you explain what each choice score corresponds to.
+
+
+### 5. Iterate on your initial set criteria
+Scorer development is not something you do just once and call it a day. Review low-score outputs to figure out if any criteria is missing or possible edge cases.
+
+
+## Best practices
+
+- Create separate scorers for each distinct evaluation aspect
+- Use weighted averages when combining scores, prioritizing critical criteria over less important ones.
+- Match scoring scale to evaluation complexity. Use binary scoring for simple checks and multi-point scales for nuanced assessments.
+
+
+## Conclusion
+
+Evals are extremely important to AI app development. Without them, you have no way of monitoring, iterating on, and improving your apps.
+
+Most of what I've written here is summarized from the [Braintrust site](https://www.braintrust.dev/docs/start) and [Evalite docs](https://www.evalite.dev/what-is-evalite)
