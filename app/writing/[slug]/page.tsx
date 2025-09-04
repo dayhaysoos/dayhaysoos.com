@@ -9,7 +9,12 @@ import remarkRehype from "remark-rehype"
 import rehypeRaw from "rehype-raw"
 import rehypeHighlight from "rehype-highlight"
 import rehypeStringify from "rehype-stringify"
+import rehypeReact from "rehype-react"
+import { mdxComponents } from "@/components/mdx-provider"
 import { unified } from "unified"
+import MdxProvider from "@/components/mdx-provider"
+import React from "react"
+import { jsx, jsxs, Fragment } from "react/jsx-runtime"
 
 function getAllPosts() {
   const postsDirectory = path.join(process.cwd(), "content/posts")
@@ -99,7 +104,7 @@ export default async function BlogPost({ params }: Props) {
 
         {/* Content */}
         <main className="prose prose-invert prose-headings:scroll-mt-24 prose-a:underline prose-a:underline-offset-2 prose-a:text-blue-400 hover:prose-a:text-blue-300 prose-pre:my-6 max-w-none">
-          <article dangerouslySetInnerHTML={{ __html: renderMarkdownToHtml(post.content) }} />
+          <MdxProvider>{renderMarkdownAsReact(post.content)}</MdxProvider>
         </main>
       </div>
     </div>
@@ -158,7 +163,7 @@ function normalizeIndentedCodeBlocks(source: string): string {
   return result.join("\n")
 }
 
-function renderMarkdownToHtml(source: string): string {
+function renderMarkdownAsReact(source: string) {
   const content = sanitizeEmbeds(source)
   const file = unified()
     .use(remarkParse)
@@ -166,8 +171,8 @@ function renderMarkdownToHtml(source: string): string {
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(rehypeHighlight, { detect: true, ignoreMissing: true })
-    .use(rehypeStringify)
+    .use(rehypeReact, { jsx, jsxs, Fragment, components: mdxComponents as any })
     .processSync(content)
 
-  return String(file)
+  return file.result as React.ReactNode
 }
