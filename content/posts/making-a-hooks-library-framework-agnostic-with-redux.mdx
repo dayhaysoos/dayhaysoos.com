@@ -46,28 +46,30 @@ RTK gives you a function called `createSlice`:
 
 This is an example of what it looks like from the RTK docs:
 
-    import { createSlice } from '@reduxjs/toolkit'
-    
-    const initialState = { value: 0 }
-    
-    const counterSlice = createSlice({
-      name: 'counter',
-      initialState,
-      reducers: {
-        increment(state) {
-          state.value++
-        },
-        decrement(state) {
-          state.value--
-        },
-        incrementByAmount(state, action) {
-          state.value += action.payload
-        },
-      },
-    })
-    
-    export const { increment, decrement, incrementByAmount } = counterSlice.actions
-    export default counterSlice.reducer
+```ts
+import { createSlice } from '@reduxjs/toolkit'
+
+const initialState = { value: 0 }
+
+const counterSlice = createSlice({
+  name: 'counter',
+  initialState,
+  reducers: {
+    increment(state) {
+      state.value++
+    },
+    decrement(state) {
+      state.value--
+    },
+    incrementByAmount(state, action) {
+      state.value += action.payload
+    },
+  },
+})
+
+export const { increment, decrement, incrementByAmount } = counterSlice.actions
+export default counterSlice.reducer
+```
 
 The way use-shopping-cart creates the slice is a bit different, though. Notice on `incrementByAmount` has an `action` and a `payload` value inside?  Imagine it being used like this:
 
@@ -75,10 +77,12 @@ The way use-shopping-cart creates the slice is a bit different, though. Notice o
 
 If for whatever reason you needed to pass a second param to that function, you would only ever get back the first param. The action would look like this:
 
-    {
-      type: 'counter/incrementByAmount',
-      payload: 2
-     }
+```
+{
+  type: 'counter/incrementByAmount',
+  payload: 2
+}
+```
 
 It would look like this no matter how many params you pass to this action. To fix this in redux, you needed to do something wild with `redux-thunk` and some other library to add extra params.
 
@@ -90,19 +94,23 @@ Inside the `reducers` object of a `slice`, the example shows that you create the
 
 It'll be:
 
-    incrementByAmount: {
-      reducer: (state, action) => {...},
-      prepare: (firstParam, secondParam) => {
-        return {payload: { firstParam, secondParam } }
-      }
-    }
+```
+incrementByAmount: {
+  reducer: (state, action) => {...},
+  prepare: (firstParam, secondParam) => {
+    return {payload: { firstParam, secondParam } }
+  }
+}
+```
 
 This would make it so that the `action` comes back like this:
 
-    {
-      type: 'counter/incrementByAmount',
-      payload: {firstParam: 2, secondParam: "some other value"}
-    }
+```
+{
+  type: 'counter/incrementByAmount',
+  payload: {firstParam: 2, secondParam: "some other value"}
+}
+```
 
 `prepare` allows you to take in the params provided to the action, and manipulate it to be anything you need it to be. You can even omit the `payload` object itself, but it's best not to stray too far from the standards in place sometimes.
 

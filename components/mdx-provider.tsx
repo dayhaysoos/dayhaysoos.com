@@ -1,6 +1,4 @@
-"use client"
-
-import { MDXProvider } from "@mdx-js/react"
+// Server-compatible MDX component mappings (no client directives)
 import Link from "next/link"
 import React from "react"
 
@@ -29,8 +27,6 @@ export const mdxComponents: Record<string, React.ComponentType<any>> = {
   pre: (props: React.ComponentPropsWithoutRef<"pre">) => <pre {...props} className="my-6" />,
 }
 
-export default function MdxProvider({ children }: { children: React.ReactNode }) {
-  return <MDXProvider components={mdxComponents}>{children}</MDXProvider>
-}
+// Intentionally no default export/provider; use `mdxComponents` with MDXRemote
 
 

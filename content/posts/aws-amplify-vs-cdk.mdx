@@ -25,31 +25,35 @@ I did not believe this at all. However, I figured if I had tried, I could time b
 
 He helped me redo my GraphQL schema from the CDK project, which were really small changes for the most part. I'll show you what Store type looked like in CDK:
 
-    type Store
-      @model
-      @key(name: "gsi", fields: ["gsi1pk", "gsi1sk"])
-      @auth(rules: [{ allow: owner }]) {
-      id: String!
-      owner: String!
-      name: String!
-      gsi1pk: String!
-      gsi1sk: String!
-      description: String
-      products: [Product]
-    }
+```
+type Store
+  @model
+  @key(name: "gsi", fields: ["gsi1pk", "gsi1sk"])
+  @auth(rules: [{ allow: owner }]) {
+  id: String!
+  owner: String!
+  name: String!
+  gsi1pk: String!
+  gsi1sk: String!
+  description: String
+  products: [Product]
+}
+```
 
 Here it is in Amplify:
 
-    type Store
-      @model
-      @key(name: "storesByOwner", fields: ["ownerId", "id"])
-      @auth(rules: [{ allow: owner }]) {
-      id: ID!
-      ownerId: ID!
-      name: String!
-      description: String
-      products: [Product] @connection(fields: ["id"])
-    }
+```
+type Store
+  @model
+  @key(name: "storesByOwner", fields: ["ownerId", "id"])
+  @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  ownerId: ID!
+  name: String!
+  description: String
+  products: [Product] @connection(fields: ["id"])
+}
+```
     
 
 We changed the key names to be a bit more definitive and intentional. Those keys are global search index keys which give you a bit more control when querying with DynamoDB. The biggest difference is the `products` key, where you have a directive called `@connection`. This allows you to associate that product with the store by the stores id.

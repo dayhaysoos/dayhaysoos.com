@@ -14,11 +14,11 @@ Let's say the goal was to show four strings wrapped in the paragraph element.
 The source for these numbers would be coming from an array: 
 
 
-\`\`\`js
+```
 const arrayOfStrings = ["Zero", "One", "Two", "Three"];
-\`\`\`
+```
 
-\`\`\`jsx
+```tsx
 function SomeComponent() {
   return (
     <p>{arrayOfStrings[0]}</p>
@@ -27,7 +27,7 @@ function SomeComponent() {
     <p>{arrayOfStrings[3]}</p>
   )
 }
-\`\`\`
+```
 
 This is no problem at all if the data in the array is so small. 
 
@@ -35,13 +35,13 @@ But what if there were hundreds of elements in that array? Doing this would take
 
 This is what I would do:
 
-\`\`\`jsx
+```tsx
 function SomeComponent() {
   return (
     {arrayOfStrings.map((string) => <p>{string}</p>))}
   )
 }
-\`\`\`
+```
 
 Notice, in that return statement, I started with an open curly bracket `{}`
 

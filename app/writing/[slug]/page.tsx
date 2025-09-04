@@ -3,17 +3,11 @@ import { notFound } from "next/navigation"
 import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
-import remarkParse from "remark-parse"
+import { MDXRemote } from "next-mdx-remote/rsc"
 import remarkGfm from "remark-gfm"
-import remarkRehype from "remark-rehype"
-import rehypeRaw from "rehype-raw"
+// no rehype-raw; keep pure MDX
 import rehypeHighlight from "rehype-highlight"
-import rehypeStringify from "rehype-stringify"
-import rehypeReact from "rehype-react"
 import { mdxComponents } from "@/components/mdx-provider"
-import { unified } from "unified"
-import MdxProvider from "@/components/mdx-provider"
-import React from "react"
 import { jsx, jsxs, Fragment } from "react/jsx-runtime"
 
 function getAllPosts() {
@@ -103,11 +97,23 @@ export default async function BlogPost({ params }: Props) {
         </header>
 
         {/* Content */}
-        <main className="prose prose-invert prose-headings:scroll-mt-24 prose-a:underline prose-a:underline-offset-2 prose-a:text-blue-400 hover:prose-a:text-blue-300 prose-pre:my-6 max-w-none">
-          <MdxProvider>{renderMarkdownAsReact(post.content)}</MdxProvider>
+        <main className="max-w-none">
+          <div className="px-0 md:px-0">
+            <MDXRemote
+              source={post.content}
+              options={{
+                mdxOptions: {
+                  remarkPlugins: [remarkGfm],
+                  rehypePlugins: [[rehypeHighlight, { detect: true, ignoreMissing: true }]],
+                },
+              }}
+              components={mdxComponents as any}
+            />
+          </div>
         </main>
       </div>
     </div>
+    
   )
 }
 
@@ -163,16 +169,4 @@ function normalizeIndentedCodeBlocks(source: string): string {
   return result.join("\n")
 }
 
-function renderMarkdownAsReact(source: string) {
-  const content = sanitizeEmbeds(source)
-  const file = unified()
-    .use(remarkParse)
-    .use(remarkGfm)
-    .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeRaw)
-    .use(rehypeHighlight, { detect: true, ignoreMissing: true })
-    .use(rehypeReact, { jsx, jsxs, Fragment, components: mdxComponents as any })
-    .processSync(content)
-
-  return file.result as React.ReactNode
-}
+// MDXRemote handles rendering; no custom markdown-to-react needed
