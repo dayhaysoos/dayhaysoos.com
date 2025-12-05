@@ -1,0 +1,15 @@
+{
+  "name": "dayhaysoos",
+  "local_port": 52834,
+  "entrypoint": "bun run dev",
+  "publish": {
+    "label": "dayhaysoos",
+    "type": "http",
+    "entrypoint": "bun run prod",
+    "published_port": 52605,
+    "env": {
+      "NODE_ENV": "production",
+      "ZO_CLIENT_IDENTITY_TOKEN": "none"
+    }
+  }
+}
