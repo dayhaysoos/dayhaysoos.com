@@ -271,7 +271,21 @@ app.post("/api/users", async (c) => {
 
 - `NODE_ENV=production` switches to production mode
 - `ZO_CLIENT_IDENTITY_TOKEN` required for calling Zo API
+- `API_SECRET` required for authenticating with protected API endpoints (like `POST /api/logs`).
 - Access via `process.env.VAR_NAME` in server code
+
+To set local environment variables, create a `.env.local` file in the root directory:
+```
+API_SECRET=your_secret_key_here
+```
+
+When making requests to protected endpoints, include the `x-secret` header:
+```bash
+curl -X POST http://localhost:PORT/api/logs \
+  -H "Content-Type: application/json" \
+  -H "x-secret: your_secret_key_here" \
+  -d '{"date": "...", "topic": "...", "content": "..."}'
+```
 
 ### File System Access
 

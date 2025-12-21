@@ -53,22 +53,37 @@ app.get("/api/logs", (c) => {
 });
 
 app.post("/api/logs", async (c) => {
-  const body = await c.req.json();
-  const { date, topic, content, tags } = body;
-  
-  const insert = db.prepare(`
-    INSERT INTO logs (date, topic, content, tags)
-    VALUES ($date, $topic, $content, $tags)
-  `);
-  
-  insert.run({
-    $date: date,
-    $topic: topic,
-    $content: content,
-    $tags: JSON.stringify(tags || [])
-  });
-  
-  return c.json({ success: true }, 201);
+  const secret = c.req.header("x-secret");
+  const apiSecret = process.env.API_SECRET;
+
+  if (!apiSecret || secret !== apiSecret) {
+    return c.json({ error: "Unauthorized" }, 401);
+  }
+
+  try {
+    const body = await c.req.json();
+    const { date, topic, content, tags } = body;
+
+    // Validate tags is an array
+    const tagsArray = Array.isArray(tags) ? tags : [];
+    
+    const insert = db.prepare(`
+      INSERT INTO logs (date, topic, content, tags)
+      VALUES ($date, $topic, $content, $tags)
+    `);
+    
+    insert.run({
+      $date: date,
+      $topic: topic,
+      $content: content,
+      $tags: JSON.stringify(tagsArray)
+    });
+    
+    return c.json({ success: true }, 201);
+  } catch (err) {
+    console.error("Error in POST /api/logs:", err);
+    return c.json({ error: "Internal Server Error" }, 500);
+  }
 });
 
 if (mode === "production") {
@@ -169,10 +184,3 @@ async function configureDevelopment(app: Hono): Promise<ViteDevServer> {
 
   return vite;
 }
-
-
-
-
-
-
-
