@@ -3,9 +3,11 @@ import type { ViteDevServer } from "vite";
 import { createServer as createViteServer } from "vite";
 import config from "./zosite.json";
 import { Hono } from "hono";
+import { Database } from "bun:sqlite";
 
 type Mode = "development" | "production";
 const app = new Hono();
+const db = new Database("builder.db");
 
 const mode: Mode =
   process.env.NODE_ENV === "production" ? "production" : "development";
@@ -14,6 +16,49 @@ const mode: Mode =
  * Add any API routes here.
  */
 app.get("/api/hello-zo", (c) => c.json({ msg: "Hello from Zo" }));
+
+app.get("/api/logs", (c) => {
+  try {
+    const query = db.query("SELECT * FROM logs ORDER BY date DESC");
+    const logs = query.all().map((log: any) => {
+      try {
+        return {
+          ...log,
+          tags: JSON.parse(log.tags),
+        };
+      } catch (e) {
+        console.error("Error parsing tags for log:", log.id, e);
+        return {
+          ...log,
+          tags: [],
+        };
+      }
+    });
+    return c.json(logs);
+  } catch (err) {
+    console.error("Error in /api/logs:", err);
+    return c.json({ error: "Internal Server Error" }, 500);
+  }
+});
+
+app.post("/api/logs", async (c) => {
+  const body = await c.req.json();
+  const { date, topic, content, tags } = body;
+  
+  const insert = db.prepare(`
+    INSERT INTO logs (date, topic, content, tags)
+    VALUES ($date, $topic, $content, $tags)
+  `);
+  
+  insert.run({
+    $date: date,
+    $topic: topic,
+    $content: content,
+    $tags: JSON.stringify(tags || [])
+  });
+  
+  return c.json({ success: true }, 201);
+});
 
 if (mode === "production") {
   configureProduction(app);
@@ -113,3 +158,9 @@ async function configureDevelopment(app: Hono): Promise<ViteDevServer> {
 
   return vite;
 }
+
+
+
+
+
+

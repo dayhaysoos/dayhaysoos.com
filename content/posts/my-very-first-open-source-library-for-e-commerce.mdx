@@ -1,0 +1,84 @@
+---
+
+date: 2020-04-20T00:05:25Z
+title: My very first open source library for e-commerce
+---
+
+ 
+
+If you've been following me for a while, you'd know that I am very involved with JamStack (Gatsby), Stripe and trying to get my fiance, [@ParissAthena](https://twitter.com/ParissAthena), to pay my invoice.
+
+I remember at some point of my coding journey thinking to myself that I would _never_ be an opensource maintainer. I didn't think I'd ever be skilled enough to attempt such a thing. I also didn't think I'd ever make anything anyone would care about. To be honest, maybe no one will care about what I've done anyway. That doesn't matter to me, though because I am **proud** of what I've gone through to get here. It really was just imposter syndrome barking at me at the time. It's a great feeling to reflect on your past doubts after you've overcome an obstacle. So, here I am, writing this blog post before making a real announcement for something I've been so excited to work on.
+
+## use-stripe-cart
+
+I made a hooks library specifically for developers who want to build e-commerce experiences with React.
+
+[https://github.com/dayhaysoos/use-stripe-cart](https://github.com/dayhaysoos/use-stripe-cart "You can check it out here on github")
+
+Shopping cart logic is a pretty big deal for making money on the internet. There's a lot to think about; What's in the cart? How many items? What's the total price of all the items in the cart? Removing items, adding items, maintaining the cart state, the list can go on.
+
+The goal of this library is to give you all of the shopping cart logic you'd need for your e-commerce stores so you don't have to care about writing the code to handle those things I've listed. It's built specifically for Stripe's Checkout experience. You can either reference product skus/plans from your Stripe dashboard or you can go with a serverless implementation and create a session ID (the preferred way to use it)
+
+## Why the hell would I do any of this?
+
+Writing the code to handle shopping carts sucks. I hate it. It's nothing I want to do ever again. I'm pretty sure no one wants to do these things from scratch either.
+
+But there's more to it than just that. That's a reason just about **anyone** can have. When people go off and do something anyone else could have done, it's usually a personal or unique experience that drives people to put so much energy into addressing an issue.
+
+It started with my Stripe based Gatsby themes. Here's a tweet where I announced it:
+
+> Tweet embed removed for MDX compatibility.
+
+
+
+This is a Gatsby theme that looks at your Stripe products that you've created with the Dashboard and renders them onto a page where buyers will be able to add these items to a shopping cart and checkout from a side panel.
+
+While this is really cool, there are some limitations from Stripe's Dashboard that make me sad in the face 😔.
+
+- You can't handle variations of products (T-shirt sizes, colors etc).
+- You can't add a description for the product. 
+  - This is super important because you can't pitch your product to the buyer.
+  - A standard e-commerce experience is being able to click on the product to see that products individual page. It's not worth giving these products in my theme their own page because there is no content to go with it.
+- You can only upload one image per product. Can't show different angles or models wearing stuff. Makes it hard to show what the variations of a product could look like.
+
+These things were available in Stripe's Orders API, but that's being deprecated in favor of the Products API which is more secure (as far as international compliance and law things that you don't want to deal with on your own) and enables you to use their amazing Checkout experience.
+
+I have been trying get Stripe to add these features for quite a while and it doesn't seem to be a priority right now. That's totally okay, because to be honest, Stripe is a product for _developers._ It's a damn good service that they provide and the things that I'm asking for in regards to the dashboard are more catered towards non-developers.
+
+**Note: You can accomplish anything you need for e-commerce with Stripe, I'm sharing what is limiting my Gatsby themes. In fact, I'm sure it's low priority _because_ it can be done without having a beefed-up dashboard experience anyway.**
+
+## The workaround
+
+Because Stripe is totally capable of providing a solid e-commerce experience without needing anything to be done on the dashboard, it pretty much makes sense for me to find another way around doing this without my Gatsby theme. One thing I realized is that the main work being done for my theme was actually in all of the shopping cart experience. I'd say that my Gatsby theme was 80% shopping cart logic and 20% Gatsby stuff. That's when the idea came to me that I should separate out the shopping cart logic!
+
+## I had no idea how to create a library, let alone a hooks library.
+
+So what was the first thing I did? I tweeted!
+
+> Tweet embed removed for MDX compatibility.
+
+Someone linked [Joe's](https://twitter.com/jsjoeio) egghead course on literally creating a hooks library from scratch. It was so good, that I only watched about 6 mins of it. The course is an hour long and may enlighten me to the secret of life if I finish, but I'll never know!
+
+And as if egghead wasn't helpful enough as a standalone service, I reached out to the community to ask if anyone could give me a code review and it ended up turning into a live webinar where I learned how to write tests for hooks on the fly 😅
+
+That really got the momentum going for me big time. Most of the logic/code was complete, we just had to mold it into a hooks library. I want to give a major shout out to [Will](https://twitter.com/willjohnsonio),
+[Taylor](https://twitter.com/taylorbell), [Ian](https://twitter.com/_jonesian "Ian") and [Kevin](https://twitter.com/dolearning) for giving me that initial push!
+
+Special shout out to [Chris](https://twitter.com/ChrisHBrown55) who randomly started making major contributions and teaching me a lot.
+
+You can actually watch the start of this project [from my home page!](/)
+
+## Serverless support
+
+Because this cart has my Gatsby themes in mind, need a way that allows me to create these products and take me to Stripe's checkout experience without relying on the dashboard. To do this, I need to create session IDs. I'll save the details for the use-stripe-cart docs, but I got tons of help from [Jason at Netlify](https://twitter.com/jlengstorf) for figuring out the best way to support this kind of integration serverless.
+
+## What's next? 🤔
+
+What's funny is that I had no idea I'd be doing 99% of what I've been doing since mid 2019. I'm going to be working on documentation to make sure it's as easy as possible for developers to use. I want to upgrade my Gatsby theme to use this library under the hood, and I want to plan for phase 2 of this library which will go a bit further into server-side support.
+
+Eventually, I'm going to be looking for clients who need e-commerce solutions with Stripe to battle test my work. Hopefully, they will pay their invoices, unlike my fiance.
+
+Thank you for reading, this has been a great journey for me. I'm looking forward to sharing this with you all!
+
+

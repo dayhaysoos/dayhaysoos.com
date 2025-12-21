@@ -1,21 +1,22 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Dash from "./pages/Dashboard";
-import { ThemeProvider } from "@/components/theme-provider";
+import Writing from "./pages/Writing";
+import Post from "./pages/Post";
+import Projects from "./pages/Projects";
+import BuilderLog from "./pages/BuilderLog";
 
-/**
- * Main SPA application component. Backend router is defined in `../server.ts`.
- */
 export default function App() {
   return (
-    <ThemeProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/hello-zo-example" element={<Dash />} />
-        </Routes>
-      </BrowserRouter>
-    </ThemeProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/writing" element={<Writing />} />
+        <Route path="/writing/:slug" element={<Post />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/log" element={<BuilderLog />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
+

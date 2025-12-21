@@ -1,0 +1,89 @@
+---
+date: 2021-03-11T15:42:37Z
+title: AWS Amplify vs CDK
+
+---
+I made it a goal for myself this year that I'd like to get more familiar with serverless architecture. I decided that I want to use AWS for most of my serverless backend solutions. It's only natural for someone who likes building things on the Jamstack.
+
+My learning project is going to be somewhat of a hosted backend product maker for Stripe users, the goal is for it to have a nice integration with a library I maintain, use-shopping-cart. I'm going to talk about how I ended up switching from CDK to Amplify.
+
+## Starting with CDK
+
+I decided that I _really_ wanted to learn CDK AppSync (for GraphQL) and DynamoDB for this project. I have to say, AWS docs are overwhelming. I honestly have no idea how anyone has learned AWS without someone around who knows AWS. Fortunately, there are a few people I can ping that were able to guide me on this journey.
+
+It took me about 2 months to get to a point where I had a backend up and running with CDK, this was on my inconsistent spare time. I learned quite a lot about how these services tie together. Even though I know I wasn't full-timing this project, I did feel like it took longer than I'd like to get where I wanted to be. A lot of it was manual work; Telling the CDK project what integrations I'd need, writing my GraphQL queries from scratch, telling AppSync what to do with the data for each GQL Query, and writing my own DynamoDB expressions. I learned a lot by doing this, which, I was pretty satisfied with. This was all purely backend, the front end part of the project was going to be totally separate. I spun up a frontend with NextJS and I created an auth flow and was able to create a store and then some products for that store, which was really exciting for me to see in action.
+
+One thing I want to point out about the Auth side for CDK, it was recommended to me that I actually use Amplify to handle auth. I felt really weird about that since, in my mind at least, it was supposed to strictly be CDK or Amplify. Even though this has saved me a lot of time, that wasn't the point at which I felt like I should switch to Amplify.
+
+I reached a point in my project where I needed to upload a File to my database. I looked for answers on how to do something like this with CDK on the AWS Docs, Stack Overflow, and even posted on Twitter about it. What the go-to solution seemed to be was relying on Amplify again to handle this piece. This was really discouraging for me, it felt like I needed to have more of an integration with Amplify and Amplify seems to be a magical black box of things. There aren't a lot of docs that support connecting Amplify and CDK in certain ways and I felt like I was going to go down a really weird path.
+
+## Switching to Amplify
+
+I spoke to someone about this who really likes Amplify, and they told me, "That whole backend you made with CDK, you could do that same thing in just a weekend with Amplify"
+
+I did not believe this at all. However, I figured if I had tried, I could time box myself for a weekend. In the best-case scenario, I have the whole entire backend I made with CDK in Amplify. Worst case, I lost a weekend and I'm still at the same point.
+
+He helped me redo my GraphQL schema from the CDK project, which were really small changes for the most part. I'll show you what Store type looked like in CDK:
+
+```
+type Store
+  @model
+  @key(name: "gsi", fields: ["gsi1pk", "gsi1sk"])
+  @auth(rules: [{ allow: owner }]) {
+  id: String!
+  owner: String!
+  name: String!
+  gsi1pk: String!
+  gsi1sk: String!
+  description: String
+  products: [Product]
+}
+```
+
+Here it is in Amplify:
+
+```
+type Store
+  @model
+  @key(name: "storesByOwner", fields: ["ownerId", "id"])
+  @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  ownerId: ID!
+  name: String!
+  description: String
+  products: [Product] @connection(fields: ["id"])
+}
+```
+    
+
+We changed the key names to be a bit more definitive and intentional. Those keys are global search index keys which give you a bit more control when querying with DynamoDB. The biggest difference is the `products` key, where you have a directive called `@connection`. This allows you to associate that product with the store by the stores id.
+
+The only steps I had to take from here was run the initial amplify command: `amplify configure`
+
+I got prompted through a bunch of questions and was asked to give the path to the GQL schema. Next thing I know, a whole enitre directory structure pops into my next JS app for the Amplify backend. They also provide a graphql directory with most of the possible mutations and queries I need. I was pretty blown away by how quickly everything got up and running. Everything I did manually with CDK ended up being automatically generated.
+
+From here, I wanted to see how far I could get, so I started building out the UI I needed to interact with this backend. Although a lot of this stuff was automated, I needed a bit more of a custom solution to get the Users, Stores, and Products to properly work well together. This is where the pain comes in for Amplify
+
+I had to go through a few weird hoops with getting the customization done. I needed to run `amplify api mock` to get a server spinning, and during that process, it gives you a bunch of `.vtl` files that are only available while that server is running, I needed to write a few lines of custom `vtl` code in there and rewrite one of the automated GQL types to get it to save properly.
+
+Staring at VTL is pretty awful, and I hope I don't have to do that often. In CDK, I'd have handled this when the `AppSync` function fires and gives you access to an `event` object, which was all done in JavaScript. Fortunately, I don't have to do too much to customize things, but this held me up for quite some time because there is very little in the docs for handling this sort of thing.
+
+One other major issue I see with Amplify is the error handling is horrible. 
+
+I got this one error:
+
+`"Expression block '$[query]' requires an expression"`
+
+I was stuck on this for almost two days. The problem was that I forgot to pass one param to my GQL query. What the error is telling me is that I wasn't sending it an expression. What's funny is that I actually made this same mistake on the CDK side, but the error told me what I forgot and I was able to resolve it easily.
+
+Stuff like this could be really scary, don't know what to trust when you are getting errors back.
+
+Either way, I still spent way less time spinning up the Amplify version of this backend. My other, smaller, concern is that Amplify does so much for you, that you don't get to learn how things really work under the hood.
+
+## Conclusion
+
+ I think Amplify is amazing at getting you up and running extremely fast. This is great if you're a start-up or you just wanna get a prototype going as quickly as possible. It lets you focus totally on the UI work and the backend infrastructure is stood up in a matter of minutes. However, if you need to extend Amplify at all or do anything that strays away from the "happy path", you're going to have a hard time.
+
+With CDK, it takes way longer to spin things up and get to an MVP, but you're in much more control and you could fully understand what's going on between your different services and your backend. There's something that's so valuable about that kind of peace of mind that gives you a lot of confidence, especially when it comes to taking things further and getting more complex.
+
+I personally am interested in going deep into both Amplify and CDK. I feel like learning more about CDK is going to help me with my Amplify projects and I'll have a good idea of knowing when to use one or another if it ever came down to it.
