@@ -134,7 +134,7 @@ function configureProduction(app: Hono) {
  */
 async function configureDevelopment(app: Hono): Promise<ViteDevServer> {
   const vite = await createViteServer({
-    server: { middlewareMode: true, hmr: false, ws: false },
+    server: { middlewareMode: true, hmr: true, ws: true },
     appType: "custom",
   });
 
