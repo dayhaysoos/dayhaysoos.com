@@ -9,6 +9,17 @@ type Mode = "development" | "production";
 const app = new Hono();
 const db = new Database("builder.db");
 
+// Ensure logs table exists
+db.run(`
+  CREATE TABLE IF NOT EXISTS logs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    date TEXT,
+    topic TEXT,
+    content TEXT,
+    tags TEXT
+  )
+`);
+
 const mode: Mode =
   process.env.NODE_ENV === "production" ? "production" : "development";
 
@@ -158,6 +169,7 @@ async function configureDevelopment(app: Hono): Promise<ViteDevServer> {
 
   return vite;
 }
+
 
 
 
