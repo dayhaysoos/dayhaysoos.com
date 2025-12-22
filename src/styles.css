@@ -142,3 +142,120 @@ body {
   font-weight: 600;
 }
 
+/* Scroll-Driven Animations */
+/* Scroll-Driven Animations */
+@supports (animation-timeline: scroll()) {
+  body {
+    timeline-scope: --scroller, --targeted-scroller;
+  }
+  
+  [data-timeline='scroller'] {
+    view-timeline-name: --scroller;
+    view-timeline-axis: block;
+  }
+
+  [data-timeline='targeted-scroller'] {
+    view-timeline-name: --targeted-scroller;
+    view-timeline-axis: block;
+  }
+
+  @keyframes exitDown {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes exitLeft {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes exitRight {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+
+  .exit-down {
+    animation: exitDown both linear;
+    animation-timeline: --scroller;
+    animation-range: entry 0% exit 20%;
+  }
+  
+  .exit-left {
+    animation: exitLeft forwards linear;
+    animation-timeline: --scroller;
+    animation-range: entry 0% exit 20%;
+  }
+  
+  .exit-right {
+    animation: exitRight forwards linear;
+    animation-timeline: --scroller;
+    animation-range: entry 0% exit 20%;
+  }
+
+  @keyframes endLeft {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      /* Top-left corner: 64px from left, 64px from top (half box size) */
+      transform: translate(calc(50vw - 64px), calc(50vh - 64px));
+    }
+  }
+
+  @keyframes endRight {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      /* Top-right corner: 64px from right, 64px from top */
+      transform: translate(calc(50vw - 64px), calc(-50vh + 64px));
+    }
+  }
+
+  @keyframes endDown {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      /* Bottom center: centered horizontally, near bottom */
+      transform: translate(calc(50vw - 64px), calc(50vh - 64px));
+    }
+  }
+
+  .end-left {
+    animation: endLeft both linear;
+    animation-timeline: --targeted-scroller;
+    animation-range: entry 0% exit 80%;
+  }
+
+  .end-right {
+    animation: endRight both linear;
+    animation-timeline: --targeted-scroller;
+    animation-range: entry 0% exit 80%;
+  }
+
+  .end-down {
+    animation: endDown both linear;
+    animation-timeline: --targeted-scroller;
+    animation-range: entry 0% exit 80%;
+  }
+
+}
